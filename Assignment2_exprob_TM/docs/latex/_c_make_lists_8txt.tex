@@ -1,0 +1,24 @@
+\hypertarget{_c_make_lists_8txt}{}\doxysection{C\+Make\+Lists.\+txt File Reference}
+\label{_c_make_lists_8txt}\index{CMakeLists.txt@{CMakeLists.txt}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_c_make_lists_8txt_afb1afb1edb8131943ad9fd05a4800bb6}{cmake\+\_\+minimum\+\_\+required}} (V\+E\+R\+S\+I\+ON 3.\+5) project(exprob\+\_\+dt) set(C\+M\+A\+K\+E\+\_\+\+E\+X\+P\+O\+R\+T\+\_\+\+C\+O\+M\+P\+I\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+DS ON) if(N\+OT C\+M\+A\+K\+E\+\_\+\+C\+\_\+\+S\+T\+A\+N\+D\+A\+RD) set(C\+M\+A\+K\+E\+\_\+\+C\+\_\+\+S\+T\+A\+N\+D\+A\+RD 99) endif() if(N\+OT C\+M\+A\+K\+E\+\_\+\+C\+X\+X\+\_\+\+S\+T\+A\+N\+D\+A\+RD) set(C\+M\+A\+K\+E\+\_\+\+C\+X\+X\+\_\+\+S\+T\+A\+N\+D\+A\+RD 14) endif() if(C\+M\+A\+K\+E\+\_\+\+C\+O\+M\+P\+I\+L\+E\+R\+\_\+\+I\+S\+\_\+\+G\+N\+U\+C\+XX OR C\+M\+A\+K\+E\+\_\+\+C\+X\+X\+\_\+\+C\+O\+M\+P\+I\+L\+E\+R\+\_\+\+ID M\+A\+T\+C\+H\+ES \char`\"{}Clang\char`\"{}) add\+\_\+compile\+\_\+options(-\/Wall -\/Wextra -\/Wpedantic) endif() find\+\_\+package(ament\+\_\+cmake R\+E\+Q\+U\+I\+R\+ED) find\+\_\+package(rclcpp R\+E\+Q\+U\+I\+R\+ED) find\+\_\+package(geometry\+\_\+msgs R\+E\+Q\+U\+I\+R\+ED) find\+\_\+package(ros2\+\_\+aruco\+\_\+interfaces R\+E\+Q\+U\+I\+R\+ED) find\+\_\+package(Open\+CV R\+E\+Q\+U\+I\+R\+ED) find\+\_\+package(cv\+\_\+bridge R\+E\+Q\+U\+I\+R\+ED) find\+\_\+package(sensor\+\_\+msgs R\+E\+Q\+U\+I\+R\+ED) find\+\_\+package(message\+\_\+filters R\+E\+Q\+U\+I\+R\+ED) add\+\_\+executable(assignment1 src/robot\+Mover.\+cpp src/assignment1.\+cpp src/cam\+Mover.\+cpp src/aruco\+Detector.\+cpp) ament\+\_\+target\+\_\+dependencies(assignment1 rclcpp geometry\+\_\+msgs ros2\+\_\+aruco\+\_\+interfaces cv\+\_\+bridge Open\+CV sensor\+\_\+msgs message\+\_\+filters) target\+\_\+include\+\_\+directories(assignment1 P\+U\+B\+L\+IC \$$<$ B\+U\+I\+L\+D\+\_\+\+I\+N\+T\+E\+R\+F\+A\+CE
+\item 
+include$<$ I\+N\+S\+T\+A\+L\+L\+\_\+\+I\+N\+T\+E\+R\+F\+A\+C\+E\+:include $>$ \mbox{\hyperlink{_c_make_lists_8txt_a17666cb28858e3e2ece330df8a1915dd}{install}} (T\+A\+R\+G\+E\+TS assignment1 D\+E\+S\+T\+I\+N\+A\+T\+I\+ON lib/\$\{P\+R\+O\+J\+E\+C\+T\+\_\+\+N\+A\+ME\}) install(D\+I\+R\+E\+C\+T\+O\+RY launch urdf config worlds models D\+E\+S\+T\+I\+N\+A\+T\+I\+ON share/\$
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_c_make_lists_8txt_afb1afb1edb8131943ad9fd05a4800bb6}\label{_c_make_lists_8txt_afb1afb1edb8131943ad9fd05a4800bb6}} 
+\index{CMakeLists.txt@{CMakeLists.txt}!cmake\_minimum\_required@{cmake\_minimum\_required}}
+\index{cmake\_minimum\_required@{cmake\_minimum\_required}!CMakeLists.txt@{CMakeLists.txt}}
+\doxysubsubsection{\texorpdfstring{cmake\_minimum\_required()}{cmake\_minimum\_required()}}
+{\footnotesize\ttfamily cmake\+\_\+minimum\+\_\+required (\begin{DoxyParamCaption}\item[{V\+E\+R\+S\+I\+ON 3.}]{5 }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_c_make_lists_8txt_a17666cb28858e3e2ece330df8a1915dd}\label{_c_make_lists_8txt_a17666cb28858e3e2ece330df8a1915dd}} 
+\index{CMakeLists.txt@{CMakeLists.txt}!install@{install}}
+\index{install@{install}!CMakeLists.txt@{CMakeLists.txt}}
+\doxysubsubsection{\texorpdfstring{install()}{install()}}
+{\footnotesize\ttfamily include$<$I\+N\+S\+T\+A\+L\+L\+\_\+\+I\+N\+T\+E\+R\+F\+A\+C\+E\+:include$>$ install (\begin{DoxyParamCaption}\item[{T\+A\+R\+G\+E\+TS assignment1 D\+E\+S\+T\+I\+N\+A\+T\+I\+ON lib/\$\{P\+R\+O\+J\+E\+C\+T\+\_\+\+N\+A\+ME\}}]{ }\end{DoxyParamCaption})}
+

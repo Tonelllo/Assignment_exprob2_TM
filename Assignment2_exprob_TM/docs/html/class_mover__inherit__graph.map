@@ -1,0 +1,5 @@
+<map id="Mover" name="Mover">
+<area shape="rect" id="node1" title=" " alt="" coords="81,5,143,32"/>
+<area shape="rect" id="node2" href="$class_cam_mover.html" title=" " alt="" coords="5,80,99,107"/>
+<area shape="rect" id="node3" href="$class_robot_mover.html" title=" " alt="" coords="123,80,224,107"/>
+</map>

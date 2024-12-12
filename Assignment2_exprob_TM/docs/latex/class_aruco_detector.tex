@@ -1,0 +1,63 @@
+\hypertarget{class_aruco_detector}{}\doxysection{Aruco\+Detector Class Reference}
+\label{class_aruco_detector}\index{ArucoDetector@{ArucoDetector}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_aruco_detector_a7ca313b73d4ef6d209290f1629a437df}\label{class_aruco_detector_a7ca313b73d4ef6d209290f1629a437df}} 
+\mbox{\hyperlink{class_aruco_detector_a7ca313b73d4ef6d209290f1629a437df}{Aruco\+Detector}} ()
+\begin{DoxyCompactList}\small\item\em Creates the aruco detection node with cv\+::aruco\+::\+D\+I\+C\+T\+\_\+\+A\+R\+U\+C\+O\+\_\+\+O\+R\+I\+G\+I\+N\+AL as the dictionary. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_aruco_detector_a95882439383cb1f3cacb4c981349dfb3}{detect}} (const sensor\+\_\+msgs\+::msg\+::\+Image\+::\+Const\+Shared\+Ptr \&)
+\begin{DoxyCompactList}\small\item\em Call this function in order to detect the markers. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_aruco_detector_a2ff6f83413783677adecf19aad0665ab}\label{class_aruco_detector_a2ff6f83413783677adecf19aad0665ab}} 
+const sensor\+\_\+msgs\+::msg\+::\+Image\+::\+Const\+Shared\+Ptr {\bfseries get\+Frame\+As\+Img\+Msg} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_aruco_detector_a7f464a8b4d3806594a915dad91301691}\label{class_aruco_detector_a7f464a8b4d3806594a915dad91301691}} 
+cv\+::\+Ptr$<$ cv\+::aruco\+::\+Detector\+Parameters $>$ {\bfseries detector\+Params\+\_\+}
+\item 
+\mbox{\Hypertarget{class_aruco_detector_ae2dc7beea5dad4658d90453dc3337b41}\label{class_aruco_detector_ae2dc7beea5dad4658d90453dc3337b41}} 
+cv\+::\+Ptr$<$ cv\+::aruco\+::\+Dictionary $>$ {\bfseries dict\+\_\+}
+\item 
+\mbox{\Hypertarget{class_aruco_detector_a803a5ce51d40ac08bea3d6bae5c7e43c}\label{class_aruco_detector_a803a5ce51d40ac08bea3d6bae5c7e43c}} 
+std\+::vector$<$ int $>$ {\bfseries marker\+Ids\+\_\+}
+\item 
+\mbox{\Hypertarget{class_aruco_detector_a3889845c7a675c26ea8b1ffd923d3a11}\label{class_aruco_detector_a3889845c7a675c26ea8b1ffd923d3a11}} 
+std\+::vector$<$ std\+::vector$<$ cv\+::\+Point2f $>$ $>$ {\bfseries marker\+Corners\+\_\+}
+\item 
+\mbox{\Hypertarget{class_aruco_detector_a96362f234a9a5e37e672d18a4907c7bb}\label{class_aruco_detector_a96362f234a9a5e37e672d18a4907c7bb}} 
+cv\+::\+Mat {\bfseries current\+Frame\+\_\+}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_aruco_detector_aacaee5a602757a2921437fcbf9626a5f}\label{class_aruco_detector_aacaee5a602757a2921437fcbf9626a5f}} 
+cv\+\_\+bridge\+::\+Cv\+Image\+Ptr {\bfseries m\+Cv\+Ptr\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_aruco_detector_a95882439383cb1f3cacb4c981349dfb3}\label{class_aruco_detector_a95882439383cb1f3cacb4c981349dfb3}} 
+\index{ArucoDetector@{ArucoDetector}!detect@{detect}}
+\index{detect@{detect}!ArucoDetector@{ArucoDetector}}
+\doxysubsubsection{\texorpdfstring{detect()}{detect()}}
+{\footnotesize\ttfamily void Aruco\+Detector\+::detect (\begin{DoxyParamCaption}\item[{const sensor\+\_\+msgs\+::msg\+::\+Image\+::\+Const\+Shared\+Ptr \&}]{img }\end{DoxyParamCaption})}
+
+
+
+Call this function in order to detect the markers. 
+
+After the call to this function all the members of the class will be updated in order to be accessed.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em img} & The image on which to do the detection \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/aruco\+Detector.\+hpp\item 
+src/aruco\+Detector.\+cpp\end{DoxyCompactItemize}
