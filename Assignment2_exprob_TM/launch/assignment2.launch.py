@@ -31,7 +31,8 @@ def generate_launch_description():
 
     spawn_entity = Node(package='gazebo_ros', executable='spawn_entity.py',
                         arguments=['-entity', 'robot',
-                                   '-topic', '/robot_description'],
+                                   '-topic', '/robot_description',
+                                   '-y', '3'],
                         output='screen')
 
     broad = Node(
