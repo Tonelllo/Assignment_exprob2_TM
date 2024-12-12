@@ -31,13 +31,13 @@ find_package(message_filters REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
-add_executable(assignment1 src/robotMover.cpp src/assignment1.cpp src/camMover.cpp src/arucoDetector.cpp)
-ament_target_dependencies(assignment1 rclcpp geometry_msgs ros2_aruco_interfaces cv_bridge OpenCV sensor_msgs message_filters)
-target_include_directories(assignment1 PUBLIC
+add_executable(assignment2_exprob_tm src/assignment2_exprob_tm.cpp)
+ament_target_dependencies(assignment2_exprob_tm rclcpp geometry_msgs ros2_aruco_interfaces cv_bridge OpenCV sensor_msgs message_filters)
+target_include_directories(assignment2_exprob_tm PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
 
-install(TARGETS assignment1
+install(TARGETS assignment2_exprob_tm
   DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY
