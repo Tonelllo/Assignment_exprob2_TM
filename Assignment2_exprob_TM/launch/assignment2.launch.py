@@ -66,7 +66,7 @@ def generate_launch_description():
 
         ExecuteProcess(
             cmd=['gazebo', '--verbose', worlds_path+'/assignment2.world', '-s', "libgazebo_ros_factory.so", "-s", "libgazebo_ros_init.so"], output='screen'),
-        # ExecuteProcess(
-        #     cmd=['rviz2', '-d', rviz_config_path+'/rviz.rviz'],
-        #     output='screen'),
+        ExecuteProcess(
+            cmd=['rviz2', '-d', rviz_config_path+'/rviz.rviz'],
+            output='screen'),
     ])

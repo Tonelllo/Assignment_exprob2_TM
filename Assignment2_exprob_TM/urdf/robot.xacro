@@ -200,4 +200,31 @@
         <limit effort="10000" velocity="100" />
     </joint>
 
+    <link name="lidar_link">
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder length="0.05" radius="0.025"/>
+            </geometry>
+        </collision>
+        <visual>
+            <origin xyz="0 0 0.0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder length="0.05" radius="0.025"/>
+            </geometry>
+            <material name="red">
+                <color rgba="1 0 0 1"/>
+            </material>
+        </visual>
+        <xacro:default_inertial mass="0.01"/>
+    </link>
+
+
+    <joint name="lidar_joint" type="fixed">
+        <parent link="link_chassis"/>
+        <child link="lidar_link"/> 
+        <axis xyz="0 0 1" />
+        <origin xyz="0.20 0.0 0.05" rpy="0 0 0"/>
+    </joint>
+
 </robot>
