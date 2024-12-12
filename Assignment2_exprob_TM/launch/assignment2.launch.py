@@ -47,10 +47,9 @@ def generate_launch_description():
         arguments=["camera_velocity_controller"]
     )
 
-    run_assignment = Node(package="exprob_dt",
-                          executable="assignment1",
+    run_assignment = Node(package="assignment2_exprob_tm",
+                          executable="assignment2_exprob_tm",
                           # prefix=['gdbserver localhost:3000'],
-                          prefix = ["konsole -e"],
                           output="screen")
 
     return LaunchDescription([
