@@ -1,72 +1,94 @@
-from launch_ros.substitutions import FindPackageShare
-from launch.actions import SetEnvironmentVariable, ExecuteProcess, DeclareLaunchArgument
-from launch.substitutions import Command, LaunchConfiguration, EnvironmentVariable, PathJoinSubstitution
-from launch import LaunchDescription
-from launch_ros.actions import Node
+"""
+Spawn Robot Description
+"""
 import os
+
+from ament_index_python.packages import get_package_share_directory
+from launch import LaunchDescription
+from launch.actions import DeclareLaunchArgument, ExecuteProcess, IncludeLaunchDescription, SetEnvironmentVariable
+from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch.substitutions import Command, LaunchConfiguration, EnvironmentVariable
+from launch_ros.actions import Node
+from launch_ros.substitutions import FindPackageShare
 
 
 def generate_launch_description():
-    assignment_path = FindPackageShare(package="assignment2_exprob_tm").find("assignment2_exprob_tm")
-    urdf_path = os.path.join(assignment_path, "urdf")
-    worlds_path = os.path.join(assignment_path, "worlds")
-    rviz_config_path = os.path.join(assignment_path, "config")
-    models_path = os.path.join(assignment_path, "models")
+    assignment2_exprob_tm_share = FindPackageShare(
+        package='assignment2_exprob_tm').find('assignment2_exprob_tm')
+    default_model_path = os.path.join(
+        assignment2_exprob_tm_share, 'urdf/robot.xacro')
+    default_world_path = os.path.join(
+        assignment2_exprob_tm_share, 'worlds/assignment2.world')
+    config_path = os.path.join(assignment2_exprob_tm_share, 'config')
+    models_path = os.path.join(assignment2_exprob_tm_share, "models")
 
     gazebo_model_path = EnvironmentVariable(
         "GAZEBO_MODEL_PATH", default_value="")
     gazebo_model_path = [gazebo_model_path, ":", models_path]
+
     robot_state_publisher_node = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
-        parameters=[{'robot_description': Command(
-            ['xacro ', LaunchConfiguration('model')])}],
+        parameters=[{'robot_description': Command(['xacro ', LaunchConfiguration('model')])},
+                    {'use_sim_time': False}]
     )
 
     joint_state_publisher_node = Node(
         package='joint_state_publisher',
         executable='joint_state_publisher',
-        name='joint_state_publisher'
+        name='joint_state_publisher',
+        parameters=[{'use_sim_time': False}]
     )
 
+    nav2_bringup = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(
+                get_package_share_directory('nav2_bringup'),
+                'launch',
+                'navigation_launch.py'
+            )
+        ),
+        launch_arguments=[
+            ('params_file', os.path.join(config_path, "nav2.yaml"))
+        ]
+    )
+
+    slam_toolbox = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(
+                get_package_share_directory('slam_toolbox'),
+                'launch',
+                'online_async_launch.py'
+            )
+        ),
+        launch_arguments=[
+            ('params_file', os.path.join(config_path, 'slam_toolbox.yaml'))
+        ]
+    )
+
+    use_sim_time = LaunchConfiguration('use_sim_time', default='false')
+
+    # GAZEBO_MODEL_PATH has to be correctly set for Gazebo to be able to find the model
     spawn_entity = Node(package='gazebo_ros', executable='spawn_entity.py',
-                        arguments=['-entity', 'robot',
-                                   '-topic', '/robot_description',
-                                   '-y', '3'],
+                        arguments=['-entity', 'my_test_robot',
+                                   '-topic', '/robot_description', '-y', '3'],
                         output='screen')
-
-    broad = Node(
-        package="controller_manager",
-        executable="spawner.py",
-        arguments=["joint_broad"]
-    )
-
-    camera_velocity_controller = Node(
-        package="controller_manager",
-        executable="spawner.py",
-        arguments=["camera_velocity_controller"]
-    )
-
-    run_assignment = Node(package="assignment2_exprob_tm",
-                          executable="assignment2_exprob_tm",
-                          # prefix=['gdbserver localhost:3000'],
-                          output="screen")
 
     return LaunchDescription([
         SetEnvironmentVariable(name="GAZEBO_MODEL_PATH",
                                value=gazebo_model_path),
-        DeclareLaunchArgument(name='model', default_value=os.path.join(urdf_path, "robot4.xacro"),
+        DeclareLaunchArgument(name='model', default_value=default_model_path,
                               description='Absolute path to robot urdf file'),
-        # aruco_ros,
         robot_state_publisher_node,
+        joint_state_publisher_node,
+        slam_toolbox,
+        nav2_bringup,
         spawn_entity,
-        camera_velocity_controller,
-        # broad,
-        run_assignment,
-
         ExecuteProcess(
-            cmd=['gazebo', '--verbose', worlds_path+'/assignment2.world', '-s', "libgazebo_ros_factory.so", "-s", "libgazebo_ros_init.so"], output='screen'),
+            cmd=['gazebo', '--verbose', default_world_path, '-s',
+                 'libgazebo_ros_factory.so', "-s", "libgazebo_ros_init.so"],
+            output='screen'),
         ExecuteProcess(
-            cmd=['rviz2', '-d', rviz_config_path+'/rviz.rviz'],
+            cmd=['rviz2', '-d', os.path.join(config_path, "rviz.rviz")],
             output='screen'),
     ])
