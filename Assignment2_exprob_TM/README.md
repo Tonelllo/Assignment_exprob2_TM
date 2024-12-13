@@ -27,3 +27,8 @@
 + `ros2 launch exprob_dt assignment1.launch.py`
 # Documentation
 You can find the documentation at [https://tonelllo.github.io/exprob1_DT/html/](https://tonelllo.github.io/exprob1_DT/html/)
+
+
+
+ros2 launch slam_toolbox online_async_launch.py params_file:=/home/tonello/Exprob2/src/Assignment2_exprob_TM/config/slam_toolbox.yaml
+ros2 launch nav2_bringup navigation_launch.py params_file:=/home/tonello/Exprob2/src/Assignment2_exprob_TM/config/nav2.yaml

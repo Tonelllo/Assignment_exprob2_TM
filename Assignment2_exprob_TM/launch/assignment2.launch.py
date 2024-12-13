@@ -55,13 +55,13 @@ def generate_launch_description():
     return LaunchDescription([
         SetEnvironmentVariable(name="GAZEBO_MODEL_PATH",
                                value=gazebo_model_path),
-        DeclareLaunchArgument(name='model', default_value=os.path.join(urdf_path, "robot.xacro"),
+        DeclareLaunchArgument(name='model', default_value=os.path.join(urdf_path, "robot4.xacro"),
                               description='Absolute path to robot urdf file'),
         # aruco_ros,
         robot_state_publisher_node,
         spawn_entity,
         camera_velocity_controller,
-        broad,
+        # broad,
         run_assignment,
 
         ExecuteProcess(
