@@ -1,0 +1,32 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/marco/ros2_ws/install/ros2_aruco_interfaces/include/**",
+        "/home/marco/ros2_ws/install/plansys2_bt_actions/include/**",
+        "/home/marco/ros2_ws/install/plansys2_executor/include/**",
+        "/home/marco/ros2_ws/install/plansys2_planner/include/**",
+        "/home/marco/ros2_ws/install/plansys2_problem_expert/include/**",
+        "/home/marco/ros2_ws/install/plansys2_domain_expert/include/**",
+        "/home/marco/ros2_ws/install/plansys2_popf_plan_solver/include/**",
+        "/home/marco/ros2_ws/install/plansys2_core/include/**",
+        "/home/marco/ros2_ws/install/plansys2_pddl_parser/include/**",
+        "/home/marco/ros2_ws/install/plansys2_msgs/include/**",
+        "/home/marco/ros2_ws/install/plansys2_lifecycle_manager/include/**",
+        "/opt/ros/foxy/include/**",
+        "/home/marco/ros2_ws/src/ros2_planning_system_examples/plansys2_bt_example/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
