@@ -86,7 +86,7 @@ using namespace std::chrono_literals;
    rclcpp::init(argc, argv);
    auto node = std::make_shared<ExploreWaypointAction>();
 
-   node->set_parameter(rclcpp::Parameter("action", "explore_waypoint"));
+   node->set_parameter(rclcpp::Parameter("action_name", "explore_waypoint"));
    node->trigger_transition(lifecycle_msgs::msg::Transition::TRANSITION_CONFIGURE);
 
    rclcpp::spin(node->get_node_base_interface());

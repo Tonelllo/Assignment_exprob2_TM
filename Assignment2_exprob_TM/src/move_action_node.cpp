@@ -34,8 +34,7 @@ using namespace std::chrono_literals;
 class MoveAction : public plansys2::ActionExecutorClient
 {
 public:
-  MoveAction()
-  : plansys2::ActionExecutorClient("move", 500ms)
+  MoveAction(): plansys2::ActionExecutorClient("move", 500ms)
   {
     geometry_msgs::msg::PoseStamped wp;
     wp.header.frame_id = "/map";
@@ -61,15 +60,15 @@ public:
     wp.pose.position.y = -5.0;
     waypoints_["wp3"] = wp;
 
-    //wp.pose.position.x = -2.0;
-    //wp.pose.position.y = -0.4;
-    //waypoints_["wp_control"] = wp;
+    // wp.pose.position.x = -2.0;
+    // wp.pose.position.y = -0.4;
+    //waypoints_["base"] = wp;
 
     using namespace std::placeholders;
     pos_sub_ = create_subscription<geometry_msgs::msg::PoseWithCovarianceStamped>(
-      "/amcl_pose",
-      10,
-      std::bind(&MoveAction::current_pos_callback, this, _1));
+        "/amcl_pose",
+        10,
+        std::bind(&MoveAction::current_pos_callback, this, _1));
   }
 
   void current_pos_callback(const geometry_msgs::msg::PoseWithCovarianceStamped::SharedPtr msg)
@@ -77,27 +76,27 @@ public:
     current_pos_ = msg->pose.pose;
   }
 
-  rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn
-  on_activate(const rclcpp_lifecycle::State & previous_state)
+  rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn on_activate(const rclcpp_lifecycle::State &previous_state)
   {
     send_feedback(0.0, "Move starting");
 
     navigation_action_client_ =
-      rclcpp_action::create_client<nav2_msgs::action::NavigateToPose>(
-      shared_from_this(),
-      "navigate_to_pose");
+        rclcpp_action::create_client<nav2_msgs::action::NavigateToPose>(
+            shared_from_this(),
+            "navigate_to_pose");
 
     bool is_action_server_ready = false;
-    do {
+    do
+    {
       RCLCPP_INFO(get_logger(), "Waiting for navigation action server...");
 
       is_action_server_ready =
-        navigation_action_client_->wait_for_action_server(std::chrono::seconds(5));
+          navigation_action_client_->wait_for_action_server(std::chrono::seconds(5));
     } while (!is_action_server_ready);
 
     RCLCPP_INFO(get_logger(), "Navigation action server ready");
 
-    auto wp_to_navigate = get_arguments()[2];  // The goal is in the 3rd argument of the action
+    auto wp_to_navigate = get_arguments()[2]; // The goal is in the 3rd argument of the action
     RCLCPP_INFO(get_logger(), "Start navigation to [%s]", wp_to_navigate.c_str());
 
     goal_pos_ = waypoints_[wp_to_navigate];
@@ -106,32 +105,34 @@ public:
     dist_to_move = getDistance(goal_pos_.pose, current_pos_);
 
     auto send_goal_options =
-      rclcpp_action::Client<nav2_msgs::action::NavigateToPose>::SendGoalOptions();
+        rclcpp_action::Client<nav2_msgs::action::NavigateToPose>::SendGoalOptions();
 
     send_goal_options.feedback_callback = [this](
-      NavigationGoalHandle::SharedPtr,
-      NavigationFeedback feedback) {
-        send_feedback(
+                                              NavigationGoalHandle::SharedPtr,
+                                              NavigationFeedback feedback)
+    {
+      send_feedback(
           std::min(1.0, std::max(0.0, 1.0 - (feedback->distance_remaining / dist_to_move))),
           "Move running");
-      };
+    };
 
-    send_goal_options.result_callback = [this](auto) {
-        finish(true, 1.0, "Move completed");
-      };
+    send_goal_options.result_callback = [this](auto)
+    {
+      finish(true, 1.0, "Move completed");
+    };
 
     future_navigation_goal_handle_ =
-      navigation_action_client_->async_send_goal(navigation_goal_, send_goal_options);
+        navigation_action_client_->async_send_goal(navigation_goal_, send_goal_options);
 
     return ActionExecutorClient::on_activate(previous_state);
   }
 
 private:
-  double getDistance(const geometry_msgs::msg::Pose & pos1, const geometry_msgs::msg::Pose & pos2)
+  double getDistance(const geometry_msgs::msg::Pose &pos1, const geometry_msgs::msg::Pose &pos2)
   {
     return sqrt(
-      (pos1.position.x - pos2.position.x) * (pos1.position.x - pos2.position.x) +
-      (pos1.position.y - pos2.position.y) * (pos1.position.y - pos2.position.y));
+        (pos1.position.x - pos2.position.x) * (pos1.position.x - pos2.position.x) +
+        (pos1.position.y - pos2.position.y) * (pos1.position.y - pos2.position.y));
   }
 
   void do_work()
@@ -141,9 +142,9 @@ private:
   std::map<std::string, geometry_msgs::msg::PoseStamped> waypoints_;
 
   using NavigationGoalHandle =
-    rclcpp_action::ClientGoalHandle<nav2_msgs::action::NavigateToPose>;
+      rclcpp_action::ClientGoalHandle<nav2_msgs::action::NavigateToPose>;
   using NavigationFeedback =
-    const std::shared_ptr<const nav2_msgs::action::NavigateToPose::Feedback>;
+      const std::shared_ptr<const nav2_msgs::action::NavigateToPose::Feedback>;
 
   rclcpp_action::Client<nav2_msgs::action::NavigateToPose>::SharedPtr navigation_action_client_;
   std::shared_future<NavigationGoalHandle::SharedPtr> future_navigation_goal_handle_;
@@ -157,7 +158,7 @@ private:
   double dist_to_move;
 };
 
-int main(int argc, char ** argv)
+int main(int argc, char **argv)
 {
   rclcpp::init(argc, argv);
   auto node = std::make_shared<MoveAction>();

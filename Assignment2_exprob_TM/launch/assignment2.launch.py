@@ -22,6 +22,8 @@ def generate_launch_description():
     config_path = os.path.join(assignment2_exprob_tm_share, 'config')
     models_path = os.path.join(assignment2_exprob_tm_share, "models")
 
+    assignment_dir = get_package_share_directory('assignment2_exprob_tm')
+
     gazebo_model_path = EnvironmentVariable(
         "GAZEBO_MODEL_PATH", default_value="")
     gazebo_model_path = [gazebo_model_path, ":", models_path]
@@ -65,6 +67,27 @@ def generate_launch_description():
             ('params_file', os.path.join(config_path, 'slam_toolbox.yaml'))
         ]
     )
+    plansys2_cmd = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(os.path.join(
+            get_package_share_directory('plansys2_bringup'),
+            'launch',
+            'plansys2_bringup_launch_monolithic.py')),
+        launch_arguments={'model_file': assignment_dir + '/pddl/patrol.pddl'}.items()
+        )
+
+    move_cmd = Node(
+        package='assignment2_exprob_tm',
+        executable='move_action_node',
+        name='move_action_node',
+        output='screen',
+        parameters=[])
+    
+    explore_waypoint_cmd = Node(
+        package='assignment2_exprob_tm',
+        executable='explore_waypoint_action_node',
+        name='explore_waypoint_action_node',
+        output='screen',
+        parameters=[])
 
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
 
@@ -84,6 +107,9 @@ def generate_launch_description():
         slam_toolbox,
         nav2_bringup,
         spawn_entity,
+        plansys2_cmd,
+        move_cmd,
+        explore_waypoint_cmd,
         ExecuteProcess(
             cmd=['gazebo', '--verbose', default_world_path, '-s',
                  'libgazebo_ros_factory.so', "-s", "libgazebo_ros_init.so"],
@@ -92,3 +118,4 @@ def generate_launch_description():
             cmd=['rviz2', '-d', os.path.join(config_path, "rviz.rviz")],
             output='screen'),
     ])
+
