@@ -60,9 +60,9 @@ public:
     wp.pose.position.y = -5.0;
     waypoints_["wp3"] = wp;
 
-    // wp.pose.position.x = -2.0;
-    // wp.pose.position.y = -0.4;
-    //waypoints_["base"] = wp;
+    wp.pose.position.x = 0.0;
+    wp.pose.position.y = 2.0;
+    waypoints_["base"] = wp;
 
     using namespace std::placeholders;
     pos_sub_ = create_subscription<geometry_msgs::msg::PoseWithCovarianceStamped>(
@@ -111,8 +111,8 @@ public:
                                               NavigationGoalHandle::SharedPtr,
                                               NavigationFeedback feedback)
     {
-      send_feedback(
-          std::min(1.0, std::max(0.0, 1.0 - (feedback->distance_remaining / dist_to_move))),
+      send_feedback( // NOTE that 0.5 is the allowed error
+          std::min(1.0, std::max(0.0, 0.05 + 1.0 - (feedback->distance_remaining / dist_to_move))),
           "Move running");
     };
 

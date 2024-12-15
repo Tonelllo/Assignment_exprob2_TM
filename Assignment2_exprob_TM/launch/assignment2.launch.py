@@ -21,8 +21,8 @@ def generate_launch_description():
         assignment2_exprob_tm_share, 'worlds/assignment2.world')
     config_path = os.path.join(assignment2_exprob_tm_share, 'config')
     models_path = os.path.join(assignment2_exprob_tm_share, "models")
+    pddl_path = os.path.join(assignment2_exprob_tm_share, "pddl")
 
-    assignment_dir = get_package_share_directory('assignment2_exprob_tm')
 
     gazebo_model_path = EnvironmentVariable(
         "GAZEBO_MODEL_PATH", default_value="")
@@ -72,7 +72,7 @@ def generate_launch_description():
             get_package_share_directory('plansys2_bringup'),
             'launch',
             'plansys2_bringup_launch_monolithic.py')),
-        launch_arguments={'model_file': assignment_dir + '/pddl/patrol.pddl'}.items()
+        launch_arguments=[('model_file', os.path.join(pddl_path,'domain.pddl'))]
         )
 
     move_cmd = Node(
@@ -82,10 +82,18 @@ def generate_launch_description():
         output='screen',
         parameters=[])
     
+
     explore_waypoint_cmd = Node(
         package='assignment2_exprob_tm',
         executable='explore_waypoint_action_node',
         name='explore_waypoint_action_node',
+        output='screen',
+        parameters=[])
+
+    mission_controller_node = Node(
+        package='assignment2_exprob_tm',
+        executable='mission_controller_node',
+        name='mission_controller_node',
         output='screen',
         parameters=[])
 
@@ -108,6 +116,7 @@ def generate_launch_description():
         nav2_bringup,
         spawn_entity,
         plansys2_cmd,
+        # mission_controller_node,
         move_cmd,
         explore_waypoint_cmd,
         ExecuteProcess(

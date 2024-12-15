@@ -22,7 +22,6 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rclcpp_action REQUIRED)
 find_package(geometry_msgs REQUIRED)
-find_package(ros2_aruco_interfaces REQUIRED)
 find_package(OpenCV REQUIRED)
 find_package(cv_bridge REQUIRED)
 find_package(sensor_msgs REQUIRED)
@@ -44,7 +43,7 @@ add_executable(move_action_node src/move_action_node.cpp)
 add_executable(explore_waypoint_action_node src/explore_waypoint_action_node.cpp)
 add_executable(mission_controller_node src/mission_controller_node.cpp)
 
-ament_target_dependencies(assignment2_exprob_tm rclcpp geometry_msgs ros2_aruco_interfaces cv_bridge OpenCV sensor_msgs message_filters)
+ament_target_dependencies(assignment2_exprob_tm rclcpp geometry_msgs cv_bridge OpenCV sensor_msgs message_filters)
 
 ament_target_dependencies(move_action_node
   geometry_msgs
@@ -86,7 +85,7 @@ install(TARGETS
   DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY
-    launch urdf config worlds models
+    launch urdf config worlds models pddl
     DESTINATION share/${PROJECT_NAME}/
 )
 
