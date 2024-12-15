@@ -21,7 +21,7 @@ using namespace std::chrono_literals;
  class ExploreWaypointAction : public plansys2::ActionExecutorClient
  {
  public:
-   ExploreWaypointAction(): plansys2::ActionExecutorClient("visit", 1s)
+   ExploreWaypointAction(): plansys2::ActionExecutorClient("explore_location", 1s)
    {
    }
 
@@ -86,7 +86,7 @@ using namespace std::chrono_literals;
    rclcpp::init(argc, argv);
    auto node = std::make_shared<ExploreWaypointAction>();
 
-   node->set_parameter(rclcpp::Parameter("action_name", "visit"));
+   node->set_parameter(rclcpp::Parameter("action_name", "explore_location"));
    node->trigger_transition(lifecycle_msgs::msg::Transition::TRANSITION_CONFIGURE);
 
    rclcpp::spin(node->get_node_base_interface());

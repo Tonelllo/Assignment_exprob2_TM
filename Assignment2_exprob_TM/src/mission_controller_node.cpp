@@ -41,14 +41,14 @@ public:
 
   void init_knowledge() {
     problem_expert_->addInstance(plansys2::Instance{"rob", "robot"});
-    problem_expert_->addInstance(plansys2::Instance{"base", "waypoint"});
+    problem_expert_->addInstance(plansys2::Instance{"base", "location"});
     problem_expert_->addInstance(plansys2::Instance{"wp1", "waypoint"});
     problem_expert_->addInstance(plansys2::Instance{"wp2", "waypoint"});
     problem_expert_->addInstance(plansys2::Instance{"wp3", "waypoint"});
     problem_expert_->addInstance(plansys2::Instance{"wp4", "waypoint"});
 
-    problem_expert_->addPredicate(plansys2::Predicate("(robot_at rob base)"));
-    problem_expert_->addPredicate(plansys2::Predicate("(visited rob base)"));
+    problem_expert_->addPredicate(plansys2::Predicate("(at-robby robot base)"));
+    problem_expert_->addPredicate(plansys2::Predicate("(explored robot base)"));
   }
 
   void step() {
@@ -56,7 +56,7 @@ public:
     case STARTING: {
       // Set the goal for next state
       problem_expert_->setGoal(plansys2::Goal(
-          "(and(visited rob wp1)(visited rob wp2)(visited rob wp3)(visited rob wp4))"));
+          "(and(explored robot wp1)(explored robot wp2)(explored robot wp3)(explored robot wp4))"));
 
       // Compute the plan
       auto domain = domain_expert_->getDomain();
@@ -89,10 +89,10 @@ public:
         if (executor_client_->getResult().value().success) {
           std::cout << "Successful finished " << std::endl;
 
-          problem_expert_->addPredicate(plansys2::Predicate("(visited wp1)"));
+          problem_expert_->addPredicate(plansys2::Predicate("(explored wp1)"));
 
           // Set the goal for next state
-          problem_expert_->setGoal(plansys2::Goal("(and(visited wp2))"));
+          problem_expert_->setGoal(plansys2::Goal("(and(explored wp2))"));
 
           // Compute the plan
           auto domain = domain_expert_->getDomain();
@@ -152,12 +152,12 @@ public:
           std::cout << "Successful finished " << std::endl;
 
           // Cleanning up
-          problem_expert_->addPredicate(plansys2::Predicate("(visited wp2)"));
+          problem_expert_->addPredicate(plansys2::Predicate("(explored wp2)"));
           // problem_expert_->removePredicate(plansys2::Predicate("(patrolled
           // wp2)"));
 
           // Set the goal for next state
-          problem_expert_->setGoal(plansys2::Goal("(and(visited wp3))"));
+          problem_expert_->setGoal(plansys2::Goal("(and(explored wp3))"));
 
           // Compute the plan
           auto domain = domain_expert_->getDomain();
@@ -218,11 +218,11 @@ public:
 
           // Cleanning up
           problem_expert_->addPredicate(
-              plansys2::Predicate("(visited wp3)")); // problem_expert_->removePredicate(plansys2::Predicate("(patrolled
+              plansys2::Predicate("(explored wp3)")); // problem_expert_->removePredicate(plansys2::Predicate("(patrolled
                                                       // wp3)"));
 
           // Set the goal for next state
-          problem_expert_->setGoal(plansys2::Goal("(and(patrolled wp4))"));
+          problem_expert_->setGoal(plansys2::Goal("(and(explored wp4))"));
 
           // Compute the plan
           auto domain = domain_expert_->getDomain();
@@ -283,7 +283,7 @@ public:
 
           // Cleanning up
           problem_expert_->addPredicate(
-              plansys2::Predicate("(visited wp4)")); // problem_expert_->removePredicate(plansys2::Predicate("(patrolled
+              plansys2::Predicate("(explored wp4)")); // problem_expert_->removePredicate(plansys2::Predicate("(patrolled
                                                       // wp4)"));
 
           state_ = FINISHED;

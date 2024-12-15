@@ -72,7 +72,7 @@ def generate_launch_description():
             get_package_share_directory('plansys2_bringup'),
             'launch',
             'plansys2_bringup_launch_monolithic.py')),
-        launch_arguments=[('model_file', os.path.join(pddl_path,'domain.pddl'))]
+        launch_arguments=[('model_file', os.path.join(pddl_path,'robot_navigation.pddl'))]
         )
 
     move_cmd = Node(
