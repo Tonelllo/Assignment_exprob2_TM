@@ -47,8 +47,8 @@ public:
     problem_expert_->addInstance(plansys2::Instance{"wp3", "waypoint"});
     problem_expert_->addInstance(plansys2::Instance{"wp4", "waypoint"});
 
-    problem_expert_->addPredicate(plansys2::Predicate("(at-robby robot base)"));
-    problem_expert_->addPredicate(plansys2::Predicate("(explored robot base)"));
+    problem_expert_->addPredicate(plansys2::Predicate("(at-robby rob base)"));
+    problem_expert_->addPredicate(plansys2::Predicate("(explored base)"));
   }
 
   void step() {
@@ -56,7 +56,7 @@ public:
     case STARTING: {
       // Set the goal for next state
       problem_expert_->setGoal(plansys2::Goal(
-          "(and(explored robot wp1)(explored robot wp2)(explored robot wp3)(explored robot wp4))"));
+          "(and(explored wp1)(explored wp2)(explored wp3)(explored wp4))"));
 
       // Compute the plan
       auto domain = domain_expert_->getDomain();

@@ -115,7 +115,7 @@ def generate_launch_description():
         slam_toolbox,
         nav2_bringup,
         spawn_entity,
-        plansys2_cmd,
+        #plansys2_cmd,
         # mission_controller_node,
         move_cmd,
         explore_waypoint_cmd,
