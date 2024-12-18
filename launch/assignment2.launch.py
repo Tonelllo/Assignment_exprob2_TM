@@ -72,7 +72,7 @@ def generate_launch_description():
             get_package_share_directory('plansys2_bringup'),
             'launch',
             'plansys2_bringup_launch_monolithic.py')),
-        launch_arguments=[('model_file', os.path.join(pddl_path,'robot_navigation.pddl'))]
+        launch_arguments=[('model_file', os.path.join(pddl_path,'domain.pddl'))]
         )
 
     move_cmd = Node(
@@ -115,7 +115,7 @@ def generate_launch_description():
         slam_toolbox,
         nav2_bringup,
         spawn_entity,
-        #plansys2_cmd,
+        plansys2_cmd,
         # mission_controller_node,
         move_cmd,
         explore_waypoint_cmd,
@@ -127,4 +127,3 @@ def generate_launch_description():
             cmd=['rviz2', '-d', os.path.join(config_path, "rviz.rviz")],
             output='screen'),
     ])
-

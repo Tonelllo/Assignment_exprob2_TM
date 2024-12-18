@@ -41,7 +41,7 @@ public:
 
   void init_knowledge() {
     problem_expert_->addInstance(plansys2::Instance{"rob", "robot"});
-    problem_expert_->addInstance(plansys2::Instance{"base", "location"});
+    problem_expert_->addInstance(plansys2::Instance{"base", "waypoint"});
     problem_expert_->addInstance(plansys2::Instance{"wp1", "waypoint"});
     problem_expert_->addInstance(plansys2::Instance{"wp2", "waypoint"});
     problem_expert_->addInstance(plansys2::Instance{"wp3", "waypoint"});
