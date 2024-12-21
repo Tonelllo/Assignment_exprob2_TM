@@ -60,8 +60,8 @@ public:
     wp.pose.position.y = -5.0;
     waypoints_["wp3"] = wp;
 
-    wp.pose.position.x = 0.0;
-    wp.pose.position.y = 2.0;
+    wp.pose.position.x = 3.0;
+    wp.pose.position.y = 3.0;
     waypoints_["base"] = wp;
 
     using namespace std::placeholders;

@@ -16,13 +16,14 @@ def generate_launch_description():
     assignment2_exprob_tm_share = FindPackageShare(
         package='assignment2_exprob_tm').find('assignment2_exprob_tm')
     default_model_path = os.path.join(
-        assignment2_exprob_tm_share, 'urdf/robot.xacro')
+        assignment2_exprob_tm_share, 'urdf/test.urdf')
     default_world_path = os.path.join(
         assignment2_exprob_tm_share, 'worlds/assignment2.world')
     config_path = os.path.join(assignment2_exprob_tm_share, 'config')
     models_path = os.path.join(assignment2_exprob_tm_share, "models")
     pddl_path = os.path.join(assignment2_exprob_tm_share, "pddl")
-
+    with open(default_model_path, 'r') as infp:
+        robot_desc = infp.read()
 
     gazebo_model_path = EnvironmentVariable(
         "GAZEBO_MODEL_PATH", default_value="")
@@ -31,15 +32,15 @@ def generate_launch_description():
     robot_state_publisher_node = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
-        parameters=[{'robot_description': Command(['xacro ', LaunchConfiguration('model')])},
-                    {'use_sim_time': False}]
+        parameters=[{'robot_description': robot_desc},
+                    {'use_sim_time': True}]
     )
 
     joint_state_publisher_node = Node(
         package='joint_state_publisher',
         executable='joint_state_publisher',
         name='joint_state_publisher',
-        parameters=[{'use_sim_time': False}]
+        parameters=[{'use_sim_time': True}]
     )
 
     nav2_bringup = IncludeLaunchDescription(
@@ -51,6 +52,7 @@ def generate_launch_description():
             )
         ),
         launch_arguments=[
+            ('autostart', 'true'),
             ('params_file', os.path.join(config_path, "nav2.yaml"))
         ]
     )
