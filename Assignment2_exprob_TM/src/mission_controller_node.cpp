@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <iomanip>
 #include <plansys2_pddl_parser/Utils.h>
 
 #include <memory>
@@ -49,9 +50,35 @@ public:
 
     problem_expert_->addPredicate(plansys2::Predicate("(at-robby rob base)"));
     problem_expert_->addPredicate(plansys2::Predicate("(explored base)"));
+    problem_expert_->addPredicate(plansys2::Predicate("(to_go wp1)"));
+    problem_expert_->addPredicate(plansys2::Predicate("(to_go wp2)"));
+    problem_expert_->addPredicate(plansys2::Predicate("(to_go wp3)"));
+    problem_expert_->addPredicate(plansys2::Predicate("(to_go wp4)"));
+  }
+
+  void show_progress() {
+    auto feedback = executor_client_->getFeedBack();
+    if (feedback.action_execution_status.size() != 8)
+      return;
+    std::cout << "\n";
+    for (const auto &action_feedback : feedback.action_execution_status) {
+      if (action_feedback.action == "move") {
+        std::cout << "Move to " << action_feedback.arguments[1]
+                  << " completed with percentage " << std::setprecision(2)
+                  << action_feedback.completion * 100.0 << "%"
+                  << std::setfill(' ') << std::setw(5) << std::endl;
+      } else if (action_feedback.action == "explore_waypoint") {
+        std::cout << "Exploring " << action_feedback.arguments[1]
+                  << " completed with percentage " << std::setprecision(2)
+                  << action_feedback.completion * 100.0 << "%"
+                  << std::setfill(' ') << std::setw(5) << std::endl;
+      }
+    }
+    std::cout << "\033[9F";
   }
 
   void step() {
+    show_progress();
     switch (state_) {
     case STARTING: {
       // Set the goal for next state
@@ -77,12 +104,6 @@ public:
     } break;
     case PATROL_WP1: {
       auto feedback = executor_client_->getFeedBack();
-
-      for (const auto &action_feedback : feedback.action_execution_status) {
-        std::cout << "[" << action_feedback.action << " "
-                  << action_feedback.completion * 100.0 << "%]";
-      }
-      std::cout << std::endl;
 
       if (!executor_client_->execute_and_check_plan() &&
           executor_client_->getResult()) {
@@ -139,12 +160,6 @@ public:
     } break;
     case PATROL_WP2: {
       auto feedback = executor_client_->getFeedBack();
-
-      for (const auto &action_feedback : feedback.action_execution_status) {
-        std::cout << "[" << action_feedback.action << " "
-                  << action_feedback.completion * 100.0 << "%]";
-      }
-      std::cout << std::endl;
 
       if (!executor_client_->execute_and_check_plan() &&
           executor_client_->getResult()) {
@@ -204,22 +219,15 @@ public:
     } break;
     case PATROL_WP3: {
       auto feedback = executor_client_->getFeedBack();
-
-      for (const auto &action_feedback : feedback.action_execution_status) {
-        std::cout << "[" << action_feedback.action << " "
-                  << action_feedback.completion * 100.0 << "%]";
-      }
-      std::cout << std::endl;
-
       if (!executor_client_->execute_and_check_plan() &&
           executor_client_->getResult()) {
         if (executor_client_->getResult().value().success) {
           std::cout << "Successful finished " << std::endl;
 
           // Cleanning up
-          problem_expert_->addPredicate(
-              plansys2::Predicate("(explored wp3)")); // problem_expert_->removePredicate(plansys2::Predicate("(patrolled
-                                                      // wp3)"));
+          problem_expert_->addPredicate(plansys2::Predicate(
+              "(explored wp3)")); // problem_expert_->removePredicate(plansys2::Predicate("(patrolled
+                                  // wp3)"));
 
           // Set the goal for next state
           problem_expert_->setGoal(plansys2::Goal("(and(explored wp4))"));
@@ -269,22 +277,15 @@ public:
     } break;
     case PATROL_WP4: {
       auto feedback = executor_client_->getFeedBack();
-
-      for (const auto &action_feedback : feedback.action_execution_status) {
-        std::cout << "[" << action_feedback.action << " "
-                  << action_feedback.completion * 100.0 << "%]";
-      }
-      std::cout << std::endl;
-
       if (!executor_client_->execute_and_check_plan() &&
           executor_client_->getResult()) {
         if (executor_client_->getResult().value().success) {
           std::cout << "Successful finished " << std::endl;
 
           // Cleanning up
-          problem_expert_->addPredicate(
-              plansys2::Predicate("(explored wp4)")); // problem_expert_->removePredicate(plansys2::Predicate("(patrolled
-                                                      // wp4)"));
+          problem_expert_->addPredicate(plansys2::Predicate(
+              "(explored wp4)")); // problem_expert_->removePredicate(plansys2::Predicate("(patrolled
+                                  // wp4)"));
 
           state_ = FINISHED;
         }
