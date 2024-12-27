@@ -1,0 +1,1 @@
+/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    CMakeFiles/cmTC_3de98.dir/src.c.o  -o cmTC_3de98 
