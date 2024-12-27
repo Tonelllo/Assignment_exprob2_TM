@@ -6,11 +6,12 @@ controller_manager:
     camera_velocity_controller:
       type: velocity_controllers/JointGroupVelocityController
 
-    joint_broad:
-      type: joint_state_broadcaster/JointStateBroadcaster
+    # joint_broad:
+    #   type: joint_state_broadcaster/JointStateBroadcaster
 
 
 camera_velocity_controller:
   ros__parameters:
     joints:
-      - camera_joint
+      - base_camera_joint
+    interface_name: velocity

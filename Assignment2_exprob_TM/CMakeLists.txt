@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.5)
 project(assignment2_exprob_tm)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_BUILD_TYPE DEBUG)
 
 # Default to C99
 if(NOT CMAKE_C_STANDARD)
@@ -40,11 +41,20 @@ find_package(plansys2_problem_expert REQUIRED)
 
 add_executable(assignment2_exprob_tm src/assignment2_exprob_tm.cpp)
 add_executable(move_action_node src/move_action_node.cpp)
-add_executable(explore_waypoint_action_node src/explore_waypoint_action_node.cpp)
+add_executable(explore_waypoint_action_node src/explore_waypoint_action_node.cpp src/arucoDetector.cpp)
 add_executable(mission_controller_node src/mission_controller_node.cpp)
+add_executable(move_ordered_action_node src/move_ordered_action_node.cpp)
 
 ament_target_dependencies(assignment2_exprob_tm rclcpp geometry_msgs cv_bridge OpenCV sensor_msgs message_filters)
+ament_target_dependencies(explore_waypoint_action_node rclcpp geometry_msgs cv_bridge OpenCV sensor_msgs message_filters)
 
+ament_target_dependencies(move_ordered_action_node
+  geometry_msgs
+  nav2_msgs
+  plansys2_executor
+  rclcpp
+  rclcpp_action
+)
 ament_target_dependencies(move_action_node
   geometry_msgs
   nav2_msgs
@@ -76,11 +86,16 @@ target_include_directories(assignment2_exprob_tm PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
 
+target_include_directories(explore_waypoint_action_node PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>)
+
 install(TARGETS 
 	assignment2_exprob_tm
 	move_action_node
 	explore_waypoint_action_node
 	mission_controller_node
+    move_ordered_action_node
 	
   DESTINATION lib/${PROJECT_NAME})
 

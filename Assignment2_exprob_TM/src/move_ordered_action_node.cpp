@@ -33,7 +33,7 @@ using namespace std::chrono_literals;
 
 class MoveAction : public plansys2::ActionExecutorClient {
 public:
-  MoveAction() : plansys2::ActionExecutorClient("move", 500ms) {
+  MoveAction() : plansys2::ActionExecutorClient("move_with_order", 500ms) {
     geometry_msgs::msg::PoseStamped wp;
     wp.header.frame_id = "/map";
     wp.header.stamp = now();
@@ -76,7 +76,7 @@ public:
 
   rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn
   on_activate(const rclcpp_lifecycle::State &previous_state) {
-    send_feedback(0.0, "Move starting");
+    send_feedback(0.0, "Move ordered starting");
 
     navigation_action_client_ =
         rclcpp_action::create_client<nav2_msgs::action::NavigateToPose>(
@@ -112,11 +112,11 @@ public:
               std::min(1.0, std::max(0.0, 1.0 -
                                               (feedback->distance_remaining /
                                                dist_to_move))),
-              "Move running");
+              "Move ordered running");
         };
 
     send_goal_options.result_callback = [this](auto) {
-        finish(true, 1.0, "Move completed");
+        finish(true, 1.0, "Move ordered completed");
     };
 
     future_navigation_goal_handle_ = navigation_action_client_->async_send_goal(
@@ -162,7 +162,7 @@ int main(int argc, char **argv) {
   rclcpp::init(argc, argv);
   auto node = std::make_shared<MoveAction>();
 
-  node->set_parameter(rclcpp::Parameter("action_name", "move"));
+  node->set_parameter(rclcpp::Parameter("action_name", "move_with_order"));
   node->trigger_transition(
       lifecycle_msgs::msg::Transition::TRANSITION_CONFIGURE);
 

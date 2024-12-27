@@ -29,6 +29,18 @@ def generate_launch_description():
         "GAZEBO_MODEL_PATH", default_value="")
     gazebo_model_path = [gazebo_model_path, ":", models_path]
 
+    broad = Node(
+        package="controller_manager",
+        executable="spawner.py",
+        arguments=["joint_broad"]
+    )
+
+    camera_velocity_controller = Node(
+        package="controller_manager",
+        executable="spawner.py",
+        arguments=["camera_velocity_controller"]
+    )
+
     robot_state_publisher_node = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
@@ -74,8 +86,16 @@ def generate_launch_description():
             get_package_share_directory('plansys2_bringup'),
             'launch',
             'plansys2_bringup_launch_monolithic.py')),
-        launch_arguments=[('model_file', os.path.join(pddl_path,'domain.pddl'))]
-        )
+        launch_arguments=[
+            ('model_file', os.path.join(pddl_path, 'domain.pddl'))]
+    )
+
+    move_ordered_cmd = Node(
+        package='assignment2_exprob_tm',
+        executable='move_ordered_action_node',
+        name='move_ordered_action_node',
+        output='screen',
+        parameters=[])
 
     move_cmd = Node(
         package='assignment2_exprob_tm',
@@ -83,7 +103,6 @@ def generate_launch_description():
         name='move_action_node',
         output='screen',
         parameters=[])
-    
 
     explore_waypoint_cmd = Node(
         package='assignment2_exprob_tm',
@@ -114,12 +133,15 @@ def generate_launch_description():
                               description='Absolute path to robot urdf file'),
         robot_state_publisher_node,
         joint_state_publisher_node,
+        # broad,
         slam_toolbox,
         nav2_bringup,
         spawn_entity,
         plansys2_cmd,
+        # camera_velocity_controller,
         # mission_controller_node,
         move_cmd,
+        move_ordered_cmd,
         explore_waypoint_cmd,
         ExecuteProcess(
             cmd=['gazebo', '--verbose', default_world_path, '-s',
