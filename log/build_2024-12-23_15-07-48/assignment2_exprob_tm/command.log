@@ -1,2 +1,0 @@
-Invoking command in '/home/marco/ros2_ws/src/build/assignment2_exprob_tm': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /home/marco/ros2_ws/src/Assignment2_exprob_TM -DCMAKE_INSTALL_PREFIX=/home/marco/ros2_ws/src/install/assignment2_exprob_tm
-Invoked command in '/home/marco/ros2_ws/src/build/assignment2_exprob_tm' returned '-2': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /home/marco/ros2_ws/src/Assignment2_exprob_TM -DCMAKE_INSTALL_PREFIX=/home/marco/ros2_ws/src/install/assignment2_exprob_tm
