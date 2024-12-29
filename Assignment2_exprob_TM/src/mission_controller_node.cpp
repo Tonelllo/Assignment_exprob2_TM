@@ -18,9 +18,11 @@
 #include <plansys2_pddl_parser/Utils.h>
 
 #include <memory>
+#include <rclcpp/utilities.hpp>
 #include <regex>
 #include <unordered_set>
 
+#include "geometry_msgs/msg/twist.hpp"
 #include "plansys2_msgs/msg/action_execution_info.hpp"
 #include "plansys2_msgs/msg/plan.hpp"
 
@@ -57,10 +59,12 @@ public:
     problem_expert_->addPredicate(plansys2::Predicate("(at-robby rob base)"));
     problem_expert_->addPredicate(plansys2::Predicate("(explored base)"));
     problem_expert_->addPredicate(plansys2::Predicate("(patrolled base)"));
-    problem_expert_->addPredicate(plansys2::Predicate("(to_go wp0)"));
-    problem_expert_->addPredicate(plansys2::Predicate("(to_go wp1)"));
-    problem_expert_->addPredicate(plansys2::Predicate("(to_go wp2)"));
-    problem_expert_->addPredicate(plansys2::Predicate("(to_go wp3)"));
+    vecPreds_ = {
+        plansys2::Predicate("(to_go wp0)"), plansys2::Predicate("(to_go wp1)"),
+        plansys2::Predicate("(to_go wp2)"), plansys2::Predicate("(to_go wp3)")};
+    for (const auto &pred : vecPreds_) {
+      problem_expert_->addPredicate(pred);
+    }
   }
 
   void show_progress() {
@@ -78,8 +82,8 @@ public:
                   << " completed with percentage " << std::setprecision(3)
                   << action_feedback.completion * 100.0 << "%          "
                   << std::endl;
-      } else if (action_feedback.action == "move_with_order") {
-        std::cout << "Moving with order " << action_feedback.arguments[2]
+      } else if (action_feedback.action == "move_to_min") {
+        std::cout << "Moving to min " << action_feedback.arguments[2]
                   << " completed with percentage " << std::setprecision(3)
                   << action_feedback.completion * 100.0 << "%          "
                   << std::endl;
@@ -184,9 +188,7 @@ public:
         if (executor_client_->getResult().value().success) {
           std::cout << "Successful finished " << std::endl;
 
-          if (problem_expert_->isGoalSatisfied(
-                  problem_expert_
-                      ->getGoal())) { 
+          if (problem_expert_->isGoalSatisfied(problem_expert_->getGoal())) {
             state_ = FINISHED_EXPLORING;
           } else {
             std::cout << "MAIN PLAN FAILED" << std::endl;
@@ -229,12 +231,7 @@ public:
 
     case FINISHED_EXPLORING: {
       std::cout << "\n\n\n\n\n\n\n\n\n\n\n";
-      problem_expert_->addPredicate(plansys2::Predicate(
-          "(comes_after base " + visited_waypoints[0] + ")"));
       for (size_t i = 0; i < aruco_waypoints.size() - 1; i++) {
-        problem_expert_->addPredicate(
-            plansys2::Predicate("(comes_after " + visited_waypoints[i] + " " +
-                                visited_waypoints[i + 1] + ")"));
         std::cout << aruco_waypoints[i] << "\t" << visited_waypoints[i]
                   << std::endl;
       }
@@ -246,18 +243,20 @@ public:
           problem_expert_->removePredicate(pred);
         }
       }
+
       problem_expert_->addPredicate(plansys2::Predicate("(at-robby rob base)"));
-      problem_expert_->clearGoal();
-      problem_expert_->setGoal(plansys2::Goal("(and"
-                                              "(explored wp0)"
-                                              "(explored wp1)"
-                                              "(explored wp2)"
-                                              "(explored wp3)"
-                                              "(patrolled wp0)"
-                                              "(patrolled wp1)"
-                                              "(patrolled wp2)"
-                                              "(patrolled wp3)"
-                                              ")"));
+      for (const auto &pred : vecPreds_) {
+        auto waypointName = pred.parameters[0].name;
+        // "wp2"
+        if (waypointName.find(visited_waypoints[0]) != std::string::npos) {
+          problem_expert_->removePredicate(pred);
+          problem_expert_->setGoal(
+              plansys2::Goal("(and(min " + waypointName + "))"));
+          auto g = problem_expert_->getGoal();
+          break;
+        }
+      }
+
       // Compute the plan
       auto domain = domain_expert_->getDomain();
       auto problem = problem_expert_->getProblem();
@@ -284,10 +283,10 @@ public:
 
       // Execute the plan
       if (executor_client_->start_plan_execution(plan.value())) {
-        state_ = ORDERED_PATROL;
+        state_ = GO_TO_SMALLEST;
       }
     } break;
-    case ORDERED_PATROL: {
+    case GO_TO_SMALLEST: {
       auto feedback = executor_client_->getFeedBack();
       if (!executor_client_->execute_and_check_plan() &&
           executor_client_->getResult()) {
@@ -317,8 +316,6 @@ public:
             }
           }
 
-          problem_expert_->addPredicate(
-              plansys2::Predicate("(at-robby rob base)"));
           // Replan
           auto domain = domain_expert_->getDomain();
           auto problem = problem_expert_->getProblem();
@@ -347,11 +344,12 @@ public:
   }
 
 private:
+  std::vector<plansys2::Predicate> vecPreds_;
   typedef enum {
     STARTING,
     EXPLORE_WP,
     FINISHED_EXPLORING,
-    ORDERED_PATROL,
+    GO_TO_SMALLEST,
     FINISHED
   } StateType;
   StateType state_;

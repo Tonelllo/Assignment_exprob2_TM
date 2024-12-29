@@ -90,10 +90,10 @@ def generate_launch_description():
             ('model_file', os.path.join(pddl_path, 'domain.pddl'))]
     )
 
-    move_ordered_cmd = Node(
+    move_to_min = Node(
         package='assignment2_exprob_tm',
-        executable='move_ordered_action_node',
-        name='move_ordered_action_node',
+        executable='move_to_min',
+        name='move_to_min',
         output='screen',
         parameters=[])
 
@@ -141,7 +141,7 @@ def generate_launch_description():
         # camera_velocity_controller,
         # mission_controller_node,
         move_cmd,
-        move_ordered_cmd,
+        move_to_min,
         explore_waypoint_cmd,
         ExecuteProcess(
             cmd=['gazebo', '--verbose', default_world_path, '-s',

@@ -43,12 +43,12 @@ add_executable(assignment2_exprob_tm src/assignment2_exprob_tm.cpp)
 add_executable(move_action_node src/move_action_node.cpp)
 add_executable(explore_waypoint_action_node src/explore_waypoint_action_node.cpp src/arucoDetector.cpp)
 add_executable(mission_controller_node src/mission_controller_node.cpp)
-add_executable(move_ordered_action_node src/move_ordered_action_node.cpp)
+add_executable(move_to_min src/move_to_min.cpp)
 
 ament_target_dependencies(assignment2_exprob_tm rclcpp geometry_msgs cv_bridge OpenCV sensor_msgs message_filters)
 ament_target_dependencies(explore_waypoint_action_node rclcpp geometry_msgs cv_bridge OpenCV sensor_msgs message_filters)
 
-ament_target_dependencies(move_ordered_action_node
+ament_target_dependencies(move_to_min
   geometry_msgs
   nav2_msgs
   plansys2_executor
@@ -95,7 +95,7 @@ install(TARGETS
 	move_action_node
 	explore_waypoint_action_node
 	mission_controller_node
-    move_ordered_action_node
+    move_to_min
 	
   DESTINATION lib/${PROJECT_NAME})
 
