@@ -184,14 +184,9 @@ public:
         if (executor_client_->getResult().value().success) {
           std::cout << "Successful finished " << std::endl;
 
-          // Set the goal for next state
-          // problem_expert_->setGoal(plansys2::Goal("(and(explored wp1))"));
-          // SECONDO ME NON SERVE PERCHè SONO SETTATI ALL'INIZIO
-          // Check if all goals are satisfied
           if (problem_expert_->isGoalSatisfied(
                   problem_expert_
-                      ->getGoal())) { // DA VEDERE SE é GIUSTO QUELLO CHE HO
-                                      // INSERITO DENTRO A ISGOALSATISFIED
+                      ->getGoal())) { 
             state_ = FINISHED_EXPLORING;
           } else {
             std::cout << "MAIN PLAN FAILED" << std::endl;
