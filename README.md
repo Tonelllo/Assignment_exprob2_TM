@@ -1,3 +1,4 @@
+# Table of Content
 - [Assumptions](#assumptions)
 - [Installation](#installation)
   * [In an already present workspace](#in-an-already-present-workspace)
@@ -20,7 +21,7 @@
 ## In a new workspace
 + `mkdir -p MyWorkspace/src`
 + `cd MyWorkspace/src`
-+ `git clone https://github.com/Tonelllo/exprob1_DT.git`
++ `git clone https://github.com/Tonelllo/Assignment_exprob2_TM.git`
 + `cd ..`
 + `source /opt/ros/foxy/setup.bash`
 + `colcon build`
@@ -28,4 +29,4 @@
 + `ros2 launch assignment2_exprob_tm assignment2.launch.py`
 + `ros2 run assignment2_exprob_tm mission_controller_node`
 # Documentation
-You can find the documentation at [https://tonelllo.github.io/exprob1_DT/html/](https://tonelllo.github.io/exprob1_DT/html/)
+You can find the documentation at [https://tonelllo.github.io/Assignment_exprob2_TM/html/](https://tonelllo.github.io/Assignment_exprob2_TM/html/)
