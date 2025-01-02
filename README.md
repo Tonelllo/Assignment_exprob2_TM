@@ -32,3 +32,5 @@
 + `ros2 run assignment2_exprob_tm mission_controller_node`
 # Documentation
 You can find the documentation at [https://tonelllo.github.io/Assignment_exprob2_TM/html/](https://tonelllo.github.io/Assignment_exprob2_TM/html/)
+# Notes
+**NOTE** that the launhfile in particular in the first runs is quite finicky. Please be patient and if the node does not start run again both the launchfile and the mission_manager node. 
