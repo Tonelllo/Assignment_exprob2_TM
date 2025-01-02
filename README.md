@@ -20,7 +20,7 @@
 ## In a new workspace
 + `mkdir -p MyWorkspace/src`
 + `cd MyWorkspace/src`
-+ `git clone https://github.com/Tonelllo/exprob1_DT.git .`
++ `git clone https://github.com/Tonelllo/exprob1_DT.git`
 + `cd ..`
 + `source /opt/ros/foxy/setup.bash`
 + `colcon build`
