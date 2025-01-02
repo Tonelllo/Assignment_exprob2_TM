@@ -9,7 +9,7 @@
 
 # In the docker container
 + `apt install ros-foxy-nav2*`
-+ `apt install ros-foxy-plansys2`
++ `apt install ros-foxy-plansys2-*`
 # Assumptions
 + [Ros2 foxy](https://docs.ros.org/en/foxy/index.html) should be installed in the system
 + Using [ubuntu 20](https://releases.ubuntu.com/focal/)
@@ -33,4 +33,4 @@
 # Documentation
 You can find the documentation at [https://tonelllo.github.io/Assignment_exprob2_TM/html/](https://tonelllo.github.io/Assignment_exprob2_TM/html/)
 # Notes
-**NOTE** that the launhfile in particular in the first runs is quite finicky. Please be patient and if the node does not start run again both the launchfile and the mission_manager node. 
+**NOTE** that the launch file in particular in the first runs is quite finicky. Please be patient and if the node does not start run again both the launchfile and the mission_manager node. 
