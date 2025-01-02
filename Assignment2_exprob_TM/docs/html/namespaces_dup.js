@@ -1,4 +1,5 @@
 var namespaces_dup =
 [
-    [ "assignment1", "namespaceassignment1.html", null ]
+    [ "assignment2", "namespaceassignment2.html", null ],
+    [ "cane", "namespacecane.html", null ]
 ];

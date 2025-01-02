@@ -1,0 +1,220 @@
+\hypertarget{class_move_to_min_action}{}\doxysection{Move\+To\+Min\+Action Class Reference}
+\label{class_move_to_min_action}\index{MoveToMinAction@{MoveToMinAction}}
+
+
+Used to move to the minimum valued aruco node.  
+
+
+
+
+Inheritance diagram for Move\+To\+Min\+Action\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{class_move_to_min_action__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Move\+To\+Min\+Action\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{class_move_to_min_action__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_move_to_min_action_af01c56b8df9db5ba89862eb0fd0ba83c}\label{class_move_to_min_action_af01c56b8df9db5ba89862eb0fd0ba83c}} 
+\mbox{\hyperlink{class_move_to_min_action_af01c56b8df9db5ba89862eb0fd0ba83c}{Move\+To\+Min\+Action}} ()
+\begin{DoxyCompactList}\small\item\em Constructor that initializes all the waypoints. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_move_to_min_action_a906120eea564c778cd3d9ea30d5ba170}{current\+\_\+pos\+\_\+callback}} (const geometry\+\_\+msgs\+::msg\+::\+Pose\+With\+Covariance\+Stamped\+::\+Shared\+Ptr msg)
+\begin{DoxyCompactList}\small\item\em Gets the curret position of the robot. \end{DoxyCompactList}\item 
+rclcpp\+\_\+lifecycle\+::node\+\_\+interfaces\+::\+Lifecycle\+Node\+Interface\+::\+Callback\+Return \mbox{\hyperlink{class_move_to_min_action_a917ea7f086c63f8ec0cbfaa37eebff71}{on\+\_\+activate}} (const rclcpp\+\_\+lifecycle\+::\+State \&previous\+\_\+state)
+\begin{DoxyCompactList}\small\item\em Sets up the functions to allow updates of the running state of the node. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_move_to_min_action_af01c56b8df9db5ba89862eb0fd0ba83c}\label{class_move_to_min_action_af01c56b8df9db5ba89862eb0fd0ba83c}} 
+\mbox{\hyperlink{class_move_to_min_action_af01c56b8df9db5ba89862eb0fd0ba83c}{Move\+To\+Min\+Action}} ()
+\begin{DoxyCompactList}\small\item\em Sets up nodes and callbacks for the function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_move_to_min_action_a906120eea564c778cd3d9ea30d5ba170}{current\+\_\+pos\+\_\+callback}} (const geometry\+\_\+msgs\+::msg\+::\+Pose\+With\+Covariance\+Stamped\+::\+Shared\+Ptr msg)
+\begin{DoxyCompactList}\small\item\em Gets the current position. \end{DoxyCompactList}\item 
+rclcpp\+\_\+lifecycle\+::node\+\_\+interfaces\+::\+Lifecycle\+Node\+Interface\+::\+Callback\+Return \mbox{\hyperlink{class_move_to_min_action_a917ea7f086c63f8ec0cbfaa37eebff71}{on\+\_\+activate}} (const rclcpp\+\_\+lifecycle\+::\+State \&previous\+\_\+state)
+\begin{DoxyCompactList}\small\item\em Callback for the activation of the node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_move_to_min_action_a4bb127d7cee0a41e8a712637290728ba}\label{class_move_to_min_action_a4bb127d7cee0a41e8a712637290728ba}} 
+using {\bfseries Navigation\+Goal\+Handle} = rclcpp\+\_\+action\+::\+Client\+Goal\+Handle$<$ nav2\+\_\+msgs\+::action\+::\+Navigate\+To\+Pose $>$
+\item 
+\mbox{\Hypertarget{class_move_to_min_action_a41fb5457bbe0391ca676aa789c07e407}\label{class_move_to_min_action_a41fb5457bbe0391ca676aa789c07e407}} 
+using {\bfseries Navigation\+Feedback} = const std\+::shared\+\_\+ptr$<$ const nav2\+\_\+msgs\+::action\+::\+Navigate\+To\+Pose\+::\+Feedback $>$
+\item 
+\mbox{\Hypertarget{class_move_to_min_action_a4bb127d7cee0a41e8a712637290728ba}\label{class_move_to_min_action_a4bb127d7cee0a41e8a712637290728ba}} 
+using {\bfseries Navigation\+Goal\+Handle} = rclcpp\+\_\+action\+::\+Client\+Goal\+Handle$<$ nav2\+\_\+msgs\+::action\+::\+Navigate\+To\+Pose $>$
+\item 
+\mbox{\Hypertarget{class_move_to_min_action_a41fb5457bbe0391ca676aa789c07e407}\label{class_move_to_min_action_a41fb5457bbe0391ca676aa789c07e407}} 
+using {\bfseries Navigation\+Feedback} = const std\+::shared\+\_\+ptr$<$ const nav2\+\_\+msgs\+::action\+::\+Navigate\+To\+Pose\+::\+Feedback $>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{class_move_to_min_action_a2217fb928f52f4bea7ee97cecea4c66d}{get\+Distance}} (const geometry\+\_\+msgs\+::msg\+::\+Pose \&pos1, const geometry\+\_\+msgs\+::msg\+::\+Pose \&pos2)
+\begin{DoxyCompactList}\small\item\em Returns the distance between two points. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_move_to_min_action_a2beecf9bd3e12a781dc5a03c14037155}\label{class_move_to_min_action_a2beecf9bd3e12a781dc5a03c14037155}} 
+void {\bfseries do\+\_\+work} ()
+\item 
+double \mbox{\hyperlink{class_move_to_min_action_a2217fb928f52f4bea7ee97cecea4c66d}{get\+Distance}} (const geometry\+\_\+msgs\+::msg\+::\+Pose \&pos1, const geometry\+\_\+msgs\+::msg\+::\+Pose \&pos2)
+\begin{DoxyCompactList}\small\item\em Returns the distance between two points. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_move_to_min_action_a2beecf9bd3e12a781dc5a03c14037155}\label{class_move_to_min_action_a2beecf9bd3e12a781dc5a03c14037155}} 
+void {\bfseries do\+\_\+work} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_move_to_min_action_ae4fb6751813c2a66303d6f7e41767b64}\label{class_move_to_min_action_ae4fb6751813c2a66303d6f7e41767b64}} 
+std\+::map$<$ std\+::string, geometry\+\_\+msgs\+::msg\+::\+Pose\+Stamped $>$ {\bfseries waypoints\+\_\+}
+\item 
+\mbox{\Hypertarget{class_move_to_min_action_a41cd141bb329188b8664be29dd8667cb}\label{class_move_to_min_action_a41cd141bb329188b8664be29dd8667cb}} 
+rclcpp\+\_\+action\+::\+Client$<$ nav2\+\_\+msgs\+::action\+::\+Navigate\+To\+Pose $>$\+::Shared\+Ptr {\bfseries navigation\+\_\+action\+\_\+client\+\_\+}
+\item 
+\mbox{\Hypertarget{class_move_to_min_action_a071eb65e6e205ca6711a63dddc0892a6}\label{class_move_to_min_action_a071eb65e6e205ca6711a63dddc0892a6}} 
+std\+::shared\+\_\+future$<$ Navigation\+Goal\+Handle\+::\+Shared\+Ptr $>$ {\bfseries future\+\_\+navigation\+\_\+goal\+\_\+handle\+\_\+}
+\item 
+\mbox{\Hypertarget{class_move_to_min_action_afb87c5e3ef8a5dbcf872f7fb80ade19b}\label{class_move_to_min_action_afb87c5e3ef8a5dbcf872f7fb80ade19b}} 
+Navigation\+Goal\+Handle\+::\+Shared\+Ptr {\bfseries navigation\+\_\+goal\+\_\+handle\+\_\+}
+\item 
+\mbox{\Hypertarget{class_move_to_min_action_af1820b332a11fca7cd0f6fe160288875}\label{class_move_to_min_action_af1820b332a11fca7cd0f6fe160288875}} 
+rclcpp\+::\+Subscription$<$ geometry\+\_\+msgs\+::msg\+::\+Pose\+With\+Covariance\+Stamped $>$\+::Shared\+Ptr {\bfseries pos\+\_\+sub\+\_\+}
+\item 
+\mbox{\Hypertarget{class_move_to_min_action_a12a34a351b6f5f91b152fd2c8a539ab5}\label{class_move_to_min_action_a12a34a351b6f5f91b152fd2c8a539ab5}} 
+geometry\+\_\+msgs\+::msg\+::\+Pose {\bfseries current\+\_\+pos\+\_\+}
+\item 
+\mbox{\Hypertarget{class_move_to_min_action_a40f43f2454d087eb4a140ffea252a1c9}\label{class_move_to_min_action_a40f43f2454d087eb4a140ffea252a1c9}} 
+geometry\+\_\+msgs\+::msg\+::\+Pose\+Stamped {\bfseries goal\+\_\+pos\+\_\+}
+\item 
+\mbox{\Hypertarget{class_move_to_min_action_a60f740cafdbbe0a369d39f944743b2f8}\label{class_move_to_min_action_a60f740cafdbbe0a369d39f944743b2f8}} 
+nav2\+\_\+msgs\+::action\+::\+Navigate\+To\+Pose\+::\+Goal {\bfseries navigation\+\_\+goal\+\_\+}
+\item 
+\mbox{\Hypertarget{class_move_to_min_action_a4855ad9cba0335bfbdf81fd2c1cac640}\label{class_move_to_min_action_a4855ad9cba0335bfbdf81fd2c1cac640}} 
+double {\bfseries dist\+\_\+to\+\_\+move}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Used to move to the minimum valued aruco node. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_move_to_min_action_a906120eea564c778cd3d9ea30d5ba170}\label{class_move_to_min_action_a906120eea564c778cd3d9ea30d5ba170}} 
+\index{MoveToMinAction@{MoveToMinAction}!current\_pos\_callback@{current\_pos\_callback}}
+\index{current\_pos\_callback@{current\_pos\_callback}!MoveToMinAction@{MoveToMinAction}}
+\doxysubsubsection{\texorpdfstring{current\_pos\_callback()}{current\_pos\_callback()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Move\+To\+Min\+Action\+::current\+\_\+pos\+\_\+callback (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::msg\+::\+Pose\+With\+Covariance\+Stamped\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the curret position of the robot. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & The position given by the amcl node \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_move_to_min_action_a906120eea564c778cd3d9ea30d5ba170}\label{class_move_to_min_action_a906120eea564c778cd3d9ea30d5ba170}} 
+\index{MoveToMinAction@{MoveToMinAction}!current\_pos\_callback@{current\_pos\_callback}}
+\index{current\_pos\_callback@{current\_pos\_callback}!MoveToMinAction@{MoveToMinAction}}
+\doxysubsubsection{\texorpdfstring{current\_pos\_callback()}{current\_pos\_callback()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Move\+To\+Min\+Action\+::current\+\_\+pos\+\_\+callback (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::msg\+::\+Pose\+With\+Covariance\+Stamped\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the current position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & The Pose msg \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_move_to_min_action_a2217fb928f52f4bea7ee97cecea4c66d}\label{class_move_to_min_action_a2217fb928f52f4bea7ee97cecea4c66d}} 
+\index{MoveToMinAction@{MoveToMinAction}!getDistance@{getDistance}}
+\index{getDistance@{getDistance}!MoveToMinAction@{MoveToMinAction}}
+\doxysubsubsection{\texorpdfstring{getDistance()}{getDistance()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily double Move\+To\+Min\+Action\+::get\+Distance (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::msg\+::\+Pose \&}]{pos1,  }\item[{const geometry\+\_\+msgs\+::msg\+::\+Pose \&}]{pos2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Returns the distance between two points. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos1} & First Pose \\
+\hline
+{\em pos2} & Second Pose \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns the distance as a double 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_move_to_min_action_a2217fb928f52f4bea7ee97cecea4c66d}\label{class_move_to_min_action_a2217fb928f52f4bea7ee97cecea4c66d}} 
+\index{MoveToMinAction@{MoveToMinAction}!getDistance@{getDistance}}
+\index{getDistance@{getDistance}!MoveToMinAction@{MoveToMinAction}}
+\doxysubsubsection{\texorpdfstring{getDistance()}{getDistance()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily double Move\+To\+Min\+Action\+::get\+Distance (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::msg\+::\+Pose \&}]{pos1,  }\item[{const geometry\+\_\+msgs\+::msg\+::\+Pose \&}]{pos2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Returns the distance between two points. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos1} & First Pose \\
+\hline
+{\em pos2} & Second Pose \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns the distance as a double 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_move_to_min_action_a917ea7f086c63f8ec0cbfaa37eebff71}\label{class_move_to_min_action_a917ea7f086c63f8ec0cbfaa37eebff71}} 
+\index{MoveToMinAction@{MoveToMinAction}!on\_activate@{on\_activate}}
+\index{on\_activate@{on\_activate}!MoveToMinAction@{MoveToMinAction}}
+\doxysubsubsection{\texorpdfstring{on\_activate()}{on\_activate()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily rclcpp\+\_\+lifecycle\+::node\+\_\+interfaces\+::\+Lifecycle\+Node\+Interface\+::\+Callback\+Return Move\+To\+Min\+Action\+::on\+\_\+activate (\begin{DoxyParamCaption}\item[{const rclcpp\+\_\+lifecycle\+::\+State \&}]{previous\+\_\+state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets up the functions to allow updates of the running state of the node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em previous\+\_\+state} & The previous state in which the node was \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The new state 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_move_to_min_action_a917ea7f086c63f8ec0cbfaa37eebff71}\label{class_move_to_min_action_a917ea7f086c63f8ec0cbfaa37eebff71}} 
+\index{MoveToMinAction@{MoveToMinAction}!on\_activate@{on\_activate}}
+\index{on\_activate@{on\_activate}!MoveToMinAction@{MoveToMinAction}}
+\doxysubsubsection{\texorpdfstring{on\_activate()}{on\_activate()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily rclcpp\+\_\+lifecycle\+::node\+\_\+interfaces\+::\+Lifecycle\+Node\+Interface\+::\+Callback\+Return Move\+To\+Min\+Action\+::on\+\_\+activate (\begin{DoxyParamCaption}\item[{const rclcpp\+\_\+lifecycle\+::\+State \&}]{previous\+\_\+state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Callback for the activation of the node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em previous\+\_\+state} & The previous State \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The updated state 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/move\+\_\+action\+\_\+node.\+cpp\item 
+src/move\+\_\+to\+\_\+min.\+cpp\end{DoxyCompactItemize}

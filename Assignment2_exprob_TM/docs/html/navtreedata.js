@@ -22,14 +22,26 @@ for the JavaScript code in this file
 */
 var NAVTREE =
 [
-  [ "Exprob assignment1", "index.html", [
+  [ "Assignment2_TM", "index.html", [
+    [ "README", "md__r_e_a_d_m_e.html", [
+      [ "Assumptions", "md__r_e_a_d_m_e.html#autotoc_md0", null ],
+      [ "Installation", "md__r_e_a_d_m_e.html#autotoc_md1", [
+        [ "In an already present workspace", "md__r_e_a_d_m_e.html#autotoc_md2", null ],
+        [ "In a new workspace", "md__r_e_a_d_m_e.html#autotoc_md3", null ]
+      ] ],
+      [ "Documentation", "md__r_e_a_d_m_e.html#autotoc_md4", null ]
+    ] ],
+    [ "Namespaces", "namespaces.html", [
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ]
+    ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", null ],
-        [ "Functions", "functions_func.html", null ]
+        [ "Functions", "functions_func.html", null ],
+        [ "Variables", "functions_vars.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -40,7 +52,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_mover_8hpp_source.html"
+"annotated.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

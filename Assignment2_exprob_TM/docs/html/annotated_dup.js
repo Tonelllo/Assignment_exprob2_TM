@@ -1,7 +1,7 @@
 var annotated_dup =
 [
     [ "ArucoDetector", "class_aruco_detector.html", "class_aruco_detector" ],
-    [ "CamMover", "class_cam_mover.html", "class_cam_mover" ],
-    [ "Mover", "class_mover.html", "class_mover" ],
-    [ "RobotMover", "class_robot_mover.html", "class_robot_mover" ]
+    [ "ExploreWaypointAction", "class_explore_waypoint_action.html", "class_explore_waypoint_action" ],
+    [ "MissionController", "class_mission_controller.html", "class_mission_controller" ],
+    [ "MoveToMinAction", "class_move_to_min_action.html", "class_move_to_min_action" ]
 ];
