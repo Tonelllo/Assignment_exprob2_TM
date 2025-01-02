@@ -1,12 +1,11 @@
 var hierarchy =
 [
-    [ "ArucoDetector", "class_aruco_detector.html", null ],
-    [ "Mover", "class_mover.html", [
-      [ "CamMover", "class_cam_mover.html", null ],
-      [ "RobotMover", "class_robot_mover.html", null ]
+    [ "ActionExecutorClient", null, [
+      [ "ExploreWaypointAction", "class_explore_waypoint_action.html", null ],
+      [ "MoveToMinAction", "class_move_to_min_action.html", null ]
     ] ],
+    [ "ArucoDetector", "class_aruco_detector.html", null ],
     [ "Node", null, [
-      [ "CamMover", "class_cam_mover.html", null ],
-      [ "RobotMover", "class_robot_mover.html", null ]
+      [ "MissionController", "class_mission_controller.html", null ]
     ] ]
 ];

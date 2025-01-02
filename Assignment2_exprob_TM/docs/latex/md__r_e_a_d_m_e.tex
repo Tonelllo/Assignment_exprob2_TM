@@ -1,0 +1,41 @@
+
+\begin{DoxyItemize}
+\item \href{\#assumptions}{\texttt{ Assumptions}}
+\item \href{\#installation}{\texttt{ Installation}}
+\begin{DoxyItemize}
+\item \href{\#in-an-already-present-workspace}{\texttt{ In an already present workspace}}
+\item \href{\#in-a-new-workspace}{\texttt{ In a new workspace}}
+\end{DoxyItemize}
+\item \href{\#documentation}{\texttt{ Documentation}}
+\end{DoxyItemize}
+
+
+\footnotesize {\itshape \href{http://ecotrust-canada.github.io/markdown-toc/}{\texttt{ Table of contents generated with markdown-\/toc}}}
+\normalsize \hypertarget{md__r_e_a_d_m_e_autotoc_md0}{}\doxysection{Assumptions}\label{md__r_e_a_d_m_e_autotoc_md0}
+
+\begin{DoxyItemize}
+\item \href{https://docs.ros.org/en/foxy/index.html}{\texttt{ Ros2 foxy}} should be installed in the system
+\item Using \href{https://releases.ubuntu.com/focal/}{\texttt{ ubuntu 20}} 
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md1}{}\doxysection{Installation}\label{md__r_e_a_d_m_e_autotoc_md1}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md2}{}\doxysubsection{In an already present workspace}\label{md__r_e_a_d_m_e_autotoc_md2}
+
+\begin{DoxyItemize}
+\item Clone this repo inside the src folder of a ros2 foxy workspace
+\item build the workspace
+\item source the project
+\item {\ttfamily ros2 launch exprob\+\_\+dt assignment1.\+launch.\+py} 
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md3}{}\doxysubsection{In a new workspace}\label{md__r_e_a_d_m_e_autotoc_md3}
+
+\begin{DoxyItemize}
+\item {\ttfamily mkdir -\/p My\+Workspace/src}
+\item {\ttfamily cd My\+Workspace/src}
+\item {\ttfamily git clone \href{https://github.com/Tonelllo/exprob1_DT.git}{\texttt{ https\+://github.\+com/\+Tonelllo/exprob1\+\_\+\+D\+T.\+git}}}
+\item {\ttfamily cd ..}
+\item {\ttfamily source /opt/ros/foxy/setup.bash}
+\item {\ttfamily colcon build}
+\item {\ttfamily source install/setup.\+bash}
+\item {\ttfamily ros2 launch exprob\+\_\+dt assignment1.\+launch.\+py} 
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md4}{}\doxysection{Documentation}\label{md__r_e_a_d_m_e_autotoc_md4}
+You can find the documentation at \href{https://tonelllo.github.io/exprob1_DT/html/}{\texttt{ https\+://tonelllo.\+github.\+io/exprob1\+\_\+\+D\+T/html/}}
+
+ros2 launch slam\+\_\+toolbox online\+\_\+async\+\_\+launch.\+py params\+\_\+file\+:=/home/tonello/\+Exprob2/src/\+Assignment2\+\_\+exprob\+\_\+\+T\+M/config/slam\+\_\+toolbox.yaml ros2 launch nav2\+\_\+bringup navigation\+\_\+launch.\+py params\+\_\+file\+:=/home/tonello/\+Exprob2/src/\+Assignment2\+\_\+exprob\+\_\+\+T\+M/config/nav2.yaml 

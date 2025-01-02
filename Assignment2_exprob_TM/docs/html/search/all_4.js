@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['getcurrentframe_4',['getCurrentFrame',['../class_cam_mover.html#a6f1447e1b099af975fe0c8e7cea7eb8d',1,'CamMover::getCurrentFrame()'],['../class_robot_mover.html#a7975840337acd050211cfbdd91d83315',1,'RobotMover::getCurrentFrame()']]]
+  ['get_5fprogress_7',['get_progress',['../class_mission_controller.html#ae13d97ff3e9dd475b77b06b2c4410975',1,'MissionController']]],
+  ['getdistance_8',['getDistance',['../class_move_to_min_action.html#a2217fb928f52f4bea7ee97cecea4c66d',1,'MoveToMinAction::getDistance(const geometry_msgs::msg::Pose &amp;pos1, const geometry_msgs::msg::Pose &amp;pos2)'],['../class_move_to_min_action.html#a2217fb928f52f4bea7ee97cecea4c66d',1,'MoveToMinAction::getDistance(const geometry_msgs::msg::Pose &amp;pos1, const geometry_msgs::msg::Pose &amp;pos2)']]]
 ];

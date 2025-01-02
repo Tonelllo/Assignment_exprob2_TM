@@ -16,7 +16,7 @@ def generate_launch_description():
     assignment2_exprob_tm_share = FindPackageShare(
         package='assignment2_exprob_tm').find('assignment2_exprob_tm')
     default_model_path = os.path.join(
-        assignment2_exprob_tm_share, 'urdf/test.urdf')
+        assignment2_exprob_tm_share, 'urdf/robot.urdf')
     default_world_path = os.path.join(
         assignment2_exprob_tm_share, 'worlds/assignment2.world')
     config_path = os.path.join(assignment2_exprob_tm_share, 'config')
@@ -122,7 +122,7 @@ def generate_launch_description():
 
     # GAZEBO_MODEL_PATH has to be correctly set for Gazebo to be able to find the model
     spawn_entity = Node(package='gazebo_ros', executable='spawn_entity.py',
-                        arguments=['-entity', 'my_test_robot',
+                        arguments=['-entity', 'robot',
                                    '-topic', '/robot_description', '-y', '3'],
                         output='screen')
 

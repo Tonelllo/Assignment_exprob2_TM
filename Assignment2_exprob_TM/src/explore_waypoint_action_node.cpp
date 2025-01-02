@@ -1,8 +1,5 @@
-
 #include <math.h>
 
-#include <algorithm>
-#include <map>
 #include <memory>
 #include <string>
 
@@ -27,6 +24,12 @@ public:
   ExploreWaypointAction()
       : plansys2::ActionExecutorClient("explore_waypoint", 1s) {}
 
+  /**
+   * @brief Callback executed when the node is set as running
+   *
+   * @param previous_state The previous State
+   * @return The next state
+   */
   rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn
   on_activate(const rclcpp_lifecycle::State &previous_state) {
     progress_ = 0.0;
@@ -38,6 +41,12 @@ public:
     return ActionExecutorClient::on_activate(previous_state);
   }
 
+  /**
+   * @brief Callback on the deactivation of the node
+   *
+   * @param previous_state The previous state
+   * @return The next state
+   */
   rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn
   on_deactivate(const rclcpp_lifecycle::State &previous_state) {
     cmd_vel_pub_->on_deactivate();
@@ -46,9 +55,12 @@ public:
   }
 
 private:
-  bool searching;
+  std::atomic<bool> searching;
   ArucoDetector mArucoDetector_;
-  int found_id = -1;
+  std::atomic<int> found_id = -1;
+  /**
+   * @brief Callback on the images coming from the camera
+   */
   rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr mCameraSubscriber_ =
       this->create_subscription<sensor_msgs::msg::Image>(
           "/camera/image_raw", 1,
@@ -65,11 +77,17 @@ private:
                                    mArucoDetector_.markerIds_);
     cv::imshow("Detection Visualization", cf_copy);
     cv::waitKey(10);
+    // ^^^ COMMENT THIS SECTION TO NOT HAVE THE VISUALIZATION
     auto arr = mArucoDetector_.markerIds_;
-    if (arr.size() > 0 && searching) {
+    
+    // 
+    if (!arr.empty() && searching) {
       found_id = arr[0];
     }
   }
+  /**
+   * @brief Sends updates during the operation cycle of theh node
+   */
   void do_work() {
     searching = true;
     if (progress_ < 1.0) {
@@ -100,7 +118,7 @@ private:
       cmd_vel_pub_->publish(cmd);
 
       searching = false;
-      finish(true, 1.0, "Id: "+std::to_string(found_id));
+      finish(true, 1.0, "Id: " + std::to_string(found_id));
       found_id = -1;
     }
   }

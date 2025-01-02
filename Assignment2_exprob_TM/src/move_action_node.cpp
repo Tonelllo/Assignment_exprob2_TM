@@ -1,17 +1,3 @@
-// Copyright 2019 Intelligent Robotics Lab
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
 #include <math.h>
 
 #include <algorithm>
@@ -31,9 +17,12 @@
 
 using namespace std::chrono_literals;
 
-class MoveAction : public plansys2::ActionExecutorClient {
+class MoveToMinAction : public plansys2::ActionExecutorClient {
 public:
-  MoveAction() : plansys2::ActionExecutorClient("move", 500ms) {
+  /**
+   * @brief Constructor that initializes all the waypoints
+   */
+  MoveToMinAction() : plansys2::ActionExecutorClient("move", 500ms) {
     geometry_msgs::msg::PoseStamped wp;
     wp.header.frame_id = "/map";
     wp.header.stamp = now();
@@ -58,22 +47,33 @@ public:
     wp.pose.position.y = -5.0;
     waypoints_["wp3"] = wp;
 
-    wp.pose.position.x = 0.0;
-    wp.pose.position.y = -3.0;
-    waypoints_["base"] = wp;
+    /*wp.pose.position.x = 0.0;*/
+    /*wp.pose.position.y = -3.0;*/
+    /*waypoints_["base"] = wp;*/
 
     using namespace std::placeholders;
     pos_sub_ =
         create_subscription<geometry_msgs::msg::PoseWithCovarianceStamped>(
             "/amcl_pose", 10,
-            std::bind(&MoveAction::current_pos_callback, this, _1));
+            std::bind(&MoveToMinAction::current_pos_callback, this, _1));
   }
 
+  /**
+   * @brief Gets the curret position of the robot
+   *
+   * @param msg The position given by the amcl node
+   */
   void current_pos_callback(
       const geometry_msgs::msg::PoseWithCovarianceStamped::SharedPtr msg) {
     current_pos_ = msg->pose.pose;
   }
 
+  /**
+   * @brief Sets up the functions to allow updates of the running state of the node
+   *
+   * @param previous_state The previous state in which the node was
+   * @return The new state
+   */
   rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn
   on_activate(const rclcpp_lifecycle::State &previous_state) {
     send_feedback(0.0, "Move starting");
@@ -109,14 +109,13 @@ public:
     send_goal_options.feedback_callback =
         [this](NavigationGoalHandle::SharedPtr, NavigationFeedback feedback) {
           send_feedback( // NOTE that 0.5 is the allowed error
-              std::min(1.0, std::max(0.0, 1.0 -
-                                              (feedback->distance_remaining /
-                                               dist_to_move))),
+              std::min(1.0, std::max(0.0, 1.0 - (feedback->distance_remaining /
+                                                 dist_to_move))),
               "Move running");
         };
 
     send_goal_options.result_callback = [this](auto) {
-        finish(true, 1.0, "Move completed");
+      finish(true, 1.0, "Move completed");
     };
 
     future_navigation_goal_handle_ = navigation_action_client_->async_send_goal(
@@ -126,6 +125,13 @@ public:
   }
 
 private:
+  /**
+   * @brief Returns the distance between two points
+   *
+   * @param pos1 First Pose
+   * @param pos2 Second Pose
+   * @return returns the distance as a double
+   */
   double getDistance(const geometry_msgs::msg::Pose &pos1,
                      const geometry_msgs::msg::Pose &pos2) {
     return sqrt((pos1.position.x - pos2.position.x) *
@@ -160,7 +166,7 @@ private:
 
 int main(int argc, char **argv) {
   rclcpp::init(argc, argv);
-  auto node = std::make_shared<MoveAction>();
+  auto node = std::make_shared<MoveToMinAction>();
 
   node->set_parameter(rclcpp::Parameter("action_name", "move"));
   node->trigger_transition(

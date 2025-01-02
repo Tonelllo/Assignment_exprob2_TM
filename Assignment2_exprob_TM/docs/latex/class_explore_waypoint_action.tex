@@ -1,0 +1,124 @@
+\hypertarget{class_explore_waypoint_action}{}\doxysection{Explore\+Waypoint\+Action Class Reference}
+\label{class_explore_waypoint_action}\index{ExploreWaypointAction@{ExploreWaypointAction}}
+
+
+Inheritance diagram for Explore\+Waypoint\+Action\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{class_explore_waypoint_action__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Explore\+Waypoint\+Action\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=322pt]{class_explore_waypoint_action__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+rclcpp\+\_\+lifecycle\+::node\+\_\+interfaces\+::\+Lifecycle\+Node\+Interface\+::\+Callback\+Return \mbox{\hyperlink{class_explore_waypoint_action_ae3806a84056875de9475b38df4500046}{on\+\_\+activate}} (const rclcpp\+\_\+lifecycle\+::\+State \&previous\+\_\+state)
+\begin{DoxyCompactList}\small\item\em Callback executed when the node is set as running. \end{DoxyCompactList}\item 
+rclcpp\+\_\+lifecycle\+::node\+\_\+interfaces\+::\+Lifecycle\+Node\+Interface\+::\+Callback\+Return \mbox{\hyperlink{class_explore_waypoint_action_ad373f3fd1757b212198c3914ac93864e}{on\+\_\+deactivate}} (const rclcpp\+\_\+lifecycle\+::\+State \&previous\+\_\+state)
+\begin{DoxyCompactList}\small\item\em Callback on the deactivation of the node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_explore_waypoint_action_ac5171eb33326134b7682fe6bc5118a6c}\label{class_explore_waypoint_action_ac5171eb33326134b7682fe6bc5118a6c}} 
+void {\bfseries get\+Current\+Frame} (const sensor\+\_\+msgs\+::msg\+::\+Image\+::\+Shared\+Ptr img)
+\item 
+\mbox{\Hypertarget{class_explore_waypoint_action_afe0af6f8e1b76806745dd73e78ed4866}\label{class_explore_waypoint_action_afe0af6f8e1b76806745dd73e78ed4866}} 
+void \mbox{\hyperlink{class_explore_waypoint_action_afe0af6f8e1b76806745dd73e78ed4866}{do\+\_\+work}} ()
+\begin{DoxyCompactList}\small\item\em Sends updates during the operation cycle of theh node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_explore_waypoint_action_a5c78c8fc4ad2e52c98bddbccecab73a5}\label{class_explore_waypoint_action_a5c78c8fc4ad2e52c98bddbccecab73a5}} 
+std\+::atomic$<$ bool $>$ {\bfseries searching}
+\item 
+\mbox{\Hypertarget{class_explore_waypoint_action_a7b4330912e0eca3d749222077b06bb09}\label{class_explore_waypoint_action_a7b4330912e0eca3d749222077b06bb09}} 
+\mbox{\hyperlink{class_aruco_detector}{Aruco\+Detector}} {\bfseries m\+Aruco\+Detector\+\_\+}
+\item 
+\mbox{\Hypertarget{class_explore_waypoint_action_a2915957b866e8ade20a5c42992b6c765}\label{class_explore_waypoint_action_a2915957b866e8ade20a5c42992b6c765}} 
+std\+::atomic$<$ int $>$ {\bfseries found\+\_\+id} = -\/1
+\item 
+rclcpp\+::\+Subscription$<$ sensor\+\_\+msgs\+::msg\+::\+Image $>$\+::Shared\+Ptr \mbox{\hyperlink{class_explore_waypoint_action_aeaff07e75284f39ff2553a4bbd2fc34f}{m\+Camera\+Subscriber\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Callback on the images coming from the camera. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_explore_waypoint_action_a854d258e35a5e2dcd404921405815869}\label{class_explore_waypoint_action_a854d258e35a5e2dcd404921405815869}} 
+float {\bfseries progress\+\_\+}
+\item 
+\mbox{\Hypertarget{class_explore_waypoint_action_a35be0eb55070fc9597c756927482e8ab}\label{class_explore_waypoint_action_a35be0eb55070fc9597c756927482e8ab}} 
+rclcpp\+\_\+lifecycle\+::\+Lifecycle\+Publisher$<$ geometry\+\_\+msgs\+::msg\+::\+Twist $>$\+::Shared\+Ptr {\bfseries cmd\+\_\+vel\+\_\+pub\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_explore_waypoint_action_ae3806a84056875de9475b38df4500046}\label{class_explore_waypoint_action_ae3806a84056875de9475b38df4500046}} 
+\index{ExploreWaypointAction@{ExploreWaypointAction}!on\_activate@{on\_activate}}
+\index{on\_activate@{on\_activate}!ExploreWaypointAction@{ExploreWaypointAction}}
+\doxysubsubsection{\texorpdfstring{on\_activate()}{on\_activate()}}
+{\footnotesize\ttfamily rclcpp\+\_\+lifecycle\+::node\+\_\+interfaces\+::\+Lifecycle\+Node\+Interface\+::\+Callback\+Return Explore\+Waypoint\+Action\+::on\+\_\+activate (\begin{DoxyParamCaption}\item[{const rclcpp\+\_\+lifecycle\+::\+State \&}]{previous\+\_\+state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Callback executed when the node is set as running. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em previous\+\_\+state} & The previous State \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The next state 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_explore_waypoint_action_ad373f3fd1757b212198c3914ac93864e}\label{class_explore_waypoint_action_ad373f3fd1757b212198c3914ac93864e}} 
+\index{ExploreWaypointAction@{ExploreWaypointAction}!on\_deactivate@{on\_deactivate}}
+\index{on\_deactivate@{on\_deactivate}!ExploreWaypointAction@{ExploreWaypointAction}}
+\doxysubsubsection{\texorpdfstring{on\_deactivate()}{on\_deactivate()}}
+{\footnotesize\ttfamily rclcpp\+\_\+lifecycle\+::node\+\_\+interfaces\+::\+Lifecycle\+Node\+Interface\+::\+Callback\+Return Explore\+Waypoint\+Action\+::on\+\_\+deactivate (\begin{DoxyParamCaption}\item[{const rclcpp\+\_\+lifecycle\+::\+State \&}]{previous\+\_\+state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Callback on the deactivation of the node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em previous\+\_\+state} & The previous state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The next state 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_explore_waypoint_action_aeaff07e75284f39ff2553a4bbd2fc34f}\label{class_explore_waypoint_action_aeaff07e75284f39ff2553a4bbd2fc34f}} 
+\index{ExploreWaypointAction@{ExploreWaypointAction}!mCameraSubscriber\_@{mCameraSubscriber\_}}
+\index{mCameraSubscriber\_@{mCameraSubscriber\_}!ExploreWaypointAction@{ExploreWaypointAction}}
+\doxysubsubsection{\texorpdfstring{mCameraSubscriber\_}{mCameraSubscriber\_}}
+{\footnotesize\ttfamily rclcpp\+::\+Subscription$<$sensor\+\_\+msgs\+::msg\+::\+Image$>$\+::Shared\+Ptr Explore\+Waypoint\+Action\+::m\+Camera\+Subscriber\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{      this-\/>create\_subscription<sensor\_msgs::msg::Image>(}
+\DoxyCodeLine{          \textcolor{stringliteral}{"/camera/image\_raw"}, 1,}
+\DoxyCodeLine{          std::bind(\&ExploreWaypointAction::getCurrentFrame, \textcolor{keyword}{this},}
+\DoxyCodeLine{                    std::placeholders::\_1))}
+
+\end{DoxyCode}
+
+
+Callback on the images coming from the camera. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/explore\+\_\+waypoint\+\_\+action\+\_\+node.\+cpp\end{DoxyCompactItemize}

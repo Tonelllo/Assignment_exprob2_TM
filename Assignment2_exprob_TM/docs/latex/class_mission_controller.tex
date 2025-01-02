@@ -1,0 +1,118 @@
+\hypertarget{class_mission_controller}{}\doxysection{Mission\+Controller Class Reference}
+\label{class_mission_controller}\index{MissionController@{MissionController}}
+
+
+Inheritance diagram for Mission\+Controller\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=182pt]{class_mission_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mission\+Controller\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=182pt]{class_mission_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_mission_controller_a9a5ab32a811161e63e2352467799ab09}\label{class_mission_controller_a9a5ab32a811161e63e2352467799ab09}} 
+void \mbox{\hyperlink{class_mission_controller_a9a5ab32a811161e63e2352467799ab09}{init}} ()
+\begin{DoxyCompactList}\small\item\em Initializes all the ojects needed to control the pddl planning. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_mission_controller_a6252684ba94b6b05a0e220c012dddae7}{init\+\_\+knowledge}} ()
+\begin{DoxyCompactList}\small\item\em Initialization of the problem file for the planning. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_mission_controller_af73aff747611d3b6c851f964fbabf5ec}\label{class_mission_controller_af73aff747611d3b6c851f964fbabf5ec}} 
+void \mbox{\hyperlink{class_mission_controller_af73aff747611d3b6c851f964fbabf5ec}{show\+\_\+progress}} ()
+\begin{DoxyCompactList}\small\item\em Displays the progress for each waypoint. Note that it\textquotesingle{}s updating in place so if the terminal is not the correct size the prints will result incorrect. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_mission_controller_ae13d97ff3e9dd475b77b06b2c4410975}\label{class_mission_controller_ae13d97ff3e9dd475b77b06b2c4410975}} 
+void \mbox{\hyperlink{class_mission_controller_ae13d97ff3e9dd475b77b06b2c4410975}{get\+\_\+progress}} ()
+\begin{DoxyCompactList}\small\item\em Gets the current state of the actions to allow the update of the problem for the second phase of going to the minimum valued aruco node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_mission_controller_a40cb0e850838cd36b6b383a81297d1f4}{step}} ()
+\begin{DoxyCompactList}\small\item\em Function run for each cycle of the node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_mission_controller_aca0a5bb6c9c1b8be8e9b2c63bcc99272}\label{class_mission_controller_aca0a5bb6c9c1b8be8e9b2c63bcc99272}} 
+std\+::atomic$<$ bool $>$ {\bfseries running} = true
+\item 
+\mbox{\Hypertarget{class_mission_controller_ad1ca99cf0a9e69809972281cdf63476f}\label{class_mission_controller_ad1ca99cf0a9e69809972281cdf63476f}} 
+std\+::vector$<$ std\+::string $>$ {\bfseries visited\+\_\+waypoints}
+\item 
+\mbox{\Hypertarget{class_mission_controller_aad69ac5a1aba70a0a7138cee6f6597f8}\label{class_mission_controller_aad69ac5a1aba70a0a7138cee6f6597f8}} 
+std\+::vector$<$ uint $>$ {\bfseries aruco\+\_\+waypoints}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_mission_controller_a5f2d451f4c729f122ee26c817c5c0d87}\label{class_mission_controller_a5f2d451f4c729f122ee26c817c5c0d87}} 
+enum {\bfseries State\+Type} \{ \newline
+{\bfseries S\+T\+A\+R\+T\+I\+NG}, 
+{\bfseries E\+X\+P\+L\+O\+R\+E\+\_\+\+WP}, 
+{\bfseries F\+I\+N\+I\+S\+H\+E\+D\+\_\+\+E\+X\+P\+L\+O\+R\+I\+NG}, 
+{\bfseries G\+O\+\_\+\+T\+O\+\_\+\+S\+M\+A\+L\+L\+E\+ST}, 
+\newline
+{\bfseries F\+I\+N\+I\+S\+H\+ED}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_mission_controller_ab402b6fdee4f2e275b8fe5e1ffa393c6}\label{class_mission_controller_ab402b6fdee4f2e275b8fe5e1ffa393c6}} 
+std\+::vector$<$ plansys2\+::\+Predicate $>$ {\bfseries vec\+Preds\+\_\+}
+\item 
+\mbox{\Hypertarget{class_mission_controller_a041d11c711123db35130ec675b9ba588}\label{class_mission_controller_a041d11c711123db35130ec675b9ba588}} 
+State\+Type {\bfseries state\+\_\+}
+\item 
+\mbox{\Hypertarget{class_mission_controller_a09cd9b740a33a449fd9fa401c52a0a74}\label{class_mission_controller_a09cd9b740a33a449fd9fa401c52a0a74}} 
+std\+::shared\+\_\+ptr$<$ plansys2\+::\+Domain\+Expert\+Client $>$ {\bfseries domain\+\_\+expert\+\_\+}
+\item 
+\mbox{\Hypertarget{class_mission_controller_a9b239eabfb3b7d0b78ab130285738c90}\label{class_mission_controller_a9b239eabfb3b7d0b78ab130285738c90}} 
+std\+::shared\+\_\+ptr$<$ plansys2\+::\+Planner\+Client $>$ {\bfseries planner\+\_\+client\+\_\+}
+\item 
+\mbox{\Hypertarget{class_mission_controller_ad283c517f1fe84a5854f60b48cbdd6ea}\label{class_mission_controller_ad283c517f1fe84a5854f60b48cbdd6ea}} 
+std\+::shared\+\_\+ptr$<$ plansys2\+::\+Problem\+Expert\+Client $>$ {\bfseries problem\+\_\+expert\+\_\+}
+\item 
+\mbox{\Hypertarget{class_mission_controller_aae4891d15f8046e5593b1342f6433176}\label{class_mission_controller_aae4891d15f8046e5593b1342f6433176}} 
+std\+::shared\+\_\+ptr$<$ plansys2\+::\+Executor\+Client $>$ {\bfseries executor\+\_\+client\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_mission_controller_a6252684ba94b6b05a0e220c012dddae7}\label{class_mission_controller_a6252684ba94b6b05a0e220c012dddae7}} 
+\index{MissionController@{MissionController}!init\_knowledge@{init\_knowledge}}
+\index{init\_knowledge@{init\_knowledge}!MissionController@{MissionController}}
+\doxysubsubsection{\texorpdfstring{init\_knowledge()}{init\_knowledge()}}
+{\footnotesize\ttfamily void Mission\+Controller\+::init\+\_\+knowledge (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Initialization of the problem file for the planning. 
+
+The robot is in an unknown position at the beginning meaning that it\textquotesingle{}s not in a waypoint. Since this is set as an initial starting position or recovery position it\textquotesingle{}s already explored.
+
+(to\+\_\+go) is used to force the planner to use the \char`\"{}move\char`\"{} action instead of the move\+\_\+to\+\_\+min
+
+(explored) is used to indicate that the aruco node in that waypoint has been identified
+
+All the waypoints and the robot get initialized. \mbox{\Hypertarget{class_mission_controller_a40cb0e850838cd36b6b383a81297d1f4}\label{class_mission_controller_a40cb0e850838cd36b6b383a81297d1f4}} 
+\index{MissionController@{MissionController}!step@{step}}
+\index{step@{step}!MissionController@{MissionController}}
+\doxysubsubsection{\texorpdfstring{step()}{step()}}
+{\footnotesize\ttfamily void Mission\+Controller\+::step (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function run for each cycle of the node. 
+
+This contains the state machine that controls the execution of the node in combination with the get\+\_\+progress function. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/mission\+\_\+controller\+\_\+node.\+cpp\end{DoxyCompactItemize}

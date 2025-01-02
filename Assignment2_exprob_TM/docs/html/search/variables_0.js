@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['currentframe_5f_54',['currentFrame_',['../class_aruco_detector.html#a96362f234a9a5e37e672d18a4907c7bb',1,'ArucoDetector']]]
+  ['mcamerasubscriber_5f_38',['mCameraSubscriber_',['../class_explore_waypoint_action.html#aeaff07e75284f39ff2553a4bbd2fc34f',1,'ExploreWaypointAction']]]
 ];

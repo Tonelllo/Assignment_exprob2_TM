@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['getcurrentframe_18',['getCurrentFrame',['../class_cam_mover.html#a6f1447e1b099af975fe0c8e7cea7eb8d',1,'CamMover::getCurrentFrame()'],['../class_robot_mover.html#a7975840337acd050211cfbdd91d83315',1,'RobotMover::getCurrentFrame()']]]
+  ['init_31',['init',['../class_mission_controller.html#a9a5ab32a811161e63e2352467799ab09',1,'MissionController']]],
+  ['init_5fknowledge_32',['init_knowledge',['../class_mission_controller.html#a6252684ba94b6b05a0e220c012dddae7',1,'MissionController']]]
 ];

@@ -5,7 +5,7 @@
 )
 
 (:init
-    (at-robby robot base)
+    (at-robby robot unknown)
     ;todo: put the initial state's facts and numeric values here
 )
 

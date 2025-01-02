@@ -9,7 +9,6 @@
     (at-robby ?r - robot ?w - waypoint)
     (explored ?w - waypoint) 
     (comes_after ?w1 - waypoint ?w2 - waypoint)
-    (patrolled ?w - waypoint)
     (to_go ?w - waypoint)
     (min ?w - waypoint)
 )

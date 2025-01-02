@@ -39,13 +39,11 @@ find_package(plansys2_problem_expert REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
-add_executable(assignment2_exprob_tm src/assignment2_exprob_tm.cpp)
 add_executable(move_action_node src/move_action_node.cpp)
 add_executable(explore_waypoint_action_node src/explore_waypoint_action_node.cpp src/arucoDetector.cpp)
 add_executable(mission_controller_node src/mission_controller_node.cpp)
 add_executable(move_to_min src/move_to_min.cpp)
 
-ament_target_dependencies(assignment2_exprob_tm rclcpp geometry_msgs cv_bridge OpenCV sensor_msgs message_filters)
 ament_target_dependencies(explore_waypoint_action_node rclcpp geometry_msgs cv_bridge OpenCV sensor_msgs message_filters)
 
 ament_target_dependencies(move_to_min
@@ -82,16 +80,12 @@ ament_target_dependencies(mission_controller_node
   rclcpp_action
 )
 
-target_include_directories(assignment2_exprob_tm PUBLIC
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-  $<INSTALL_INTERFACE:include>)
 
 target_include_directories(explore_waypoint_action_node PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
 
 install(TARGETS 
-	assignment2_exprob_tm
 	move_action_node
 	explore_waypoint_action_node
 	mission_controller_node
