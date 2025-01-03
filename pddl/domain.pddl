@@ -8,7 +8,6 @@
 (:predicates 
     (at-robby ?r - robot ?w - waypoint)
     (explored ?w - waypoint) 
-    (comes_after ?w1 - waypoint ?w2 - waypoint)
     (to_go ?w - waypoint)
     (min ?w - waypoint)
 )

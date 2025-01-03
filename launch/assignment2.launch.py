@@ -29,18 +29,6 @@ def generate_launch_description():
         "GAZEBO_MODEL_PATH", default_value="")
     gazebo_model_path = [gazebo_model_path, ":", models_path]
 
-    broad = Node(
-        package="controller_manager",
-        executable="spawner.py",
-        arguments=["joint_broad"]
-    )
-
-    camera_velocity_controller = Node(
-        package="controller_manager",
-        executable="spawner.py",
-        arguments=["camera_velocity_controller"]
-    )
-
     robot_state_publisher_node = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
@@ -111,15 +99,6 @@ def generate_launch_description():
         output='screen',
         parameters=[])
 
-    mission_controller_node = Node(
-        package='assignment2_exprob_tm',
-        executable='mission_controller_node',
-        name='mission_controller_node',
-        output='screen',
-        parameters=[])
-
-    use_sim_time = LaunchConfiguration('use_sim_time', default='false')
-
     # GAZEBO_MODEL_PATH has to be correctly set for Gazebo to be able to find the model
     spawn_entity = Node(package='gazebo_ros', executable='spawn_entity.py',
                         arguments=['-entity', 'robot',
@@ -133,13 +112,10 @@ def generate_launch_description():
                               description='Absolute path to robot urdf file'),
         robot_state_publisher_node,
         joint_state_publisher_node,
-        # broad,
         slam_toolbox,
         nav2_bringup,
         spawn_entity,
         plansys2_cmd,
-        # camera_velocity_controller,
-        # mission_controller_node,
         move_cmd,
         move_to_min,
         explore_waypoint_cmd,

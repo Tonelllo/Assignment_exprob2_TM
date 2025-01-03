@@ -110,8 +110,8 @@ public:
       if (action_feedback.action == "explore_waypoint") {
         auto waypoint = action_feedback.arguments[1];
         // Regex_match returns true whether the regex matches the string and in
-        // the 1 position of the of the matches(smatch) there is the first
-        // captuing group.
+        // the 1 position of the matches(smatch) there is the first
+        // capturing group.
         // Once there is a match it means that the the node has been explored
         // because the success string is printed.
         if (std::regex_match(action_feedback.message_status, m, r)) {
@@ -162,6 +162,7 @@ public:
   void step() {
     show_progress();
     get_progress();
+
     switch (state_) {
     case STARTING: {
       // Set the initial goal
@@ -194,6 +195,7 @@ public:
         state_ = EXPLORE_WP;
       }
     } break;
+
     case EXPLORE_WP: {
       auto feedback = executor_client_->getFeedBack();
       if (!executor_client_->execute_and_check_plan() &&
@@ -272,7 +274,6 @@ public:
           problem_expert_->removePredicate(pred);
           problem_expert_->setGoal(
               plansys2::Goal("(and(min " + waypointName + "))"));
-          auto g = problem_expert_->getGoal();
           break;
         }
       }
@@ -306,6 +307,7 @@ public:
         state_ = GO_TO_SMALLEST;
       }
     } break;
+
     case GO_TO_SMALLEST: {
       auto feedback = executor_client_->getFeedBack();
       if (!executor_client_->execute_and_check_plan() &&

@@ -17,12 +17,12 @@
 
 using namespace std::chrono_literals;
 
-class MoveToMinAction : public plansys2::ActionExecutorClient {
+class MoveAction : public plansys2::ActionExecutorClient {
 public:
   /**
    * @brief Constructor that initializes all the waypoints
    */
-  MoveToMinAction() : plansys2::ActionExecutorClient("move", 500ms) {
+  MoveAction() : plansys2::ActionExecutorClient("move", 500ms) {
     geometry_msgs::msg::PoseStamped wp;
     wp.header.frame_id = "/map";
     wp.header.stamp = now();
@@ -55,7 +55,7 @@ public:
     pos_sub_ =
         create_subscription<geometry_msgs::msg::PoseWithCovarianceStamped>(
             "/amcl_pose", 10,
-            std::bind(&MoveToMinAction::current_pos_callback, this, _1));
+            std::bind(&MoveAction::current_pos_callback, this, _1));
   }
 
   /**
@@ -166,7 +166,7 @@ private:
 
 int main(int argc, char **argv) {
   rclcpp::init(argc, argv);
-  auto node = std::make_shared<MoveToMinAction>();
+  auto node = std::make_shared<MoveAction>();
 
   node->set_parameter(rclcpp::Parameter("action_name", "move"));
   node->trigger_transition(
