@@ -94,9 +94,8 @@ $(document).ready(function(){initNavTree('class_aruco_detector.html',''); initRe
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7ca313b73d4ef6d209290f1629a437df"><td class="memItemLeft" align="right" valign="top"><a id="a7ca313b73d4ef6d209290f1629a437df"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_aruco_detector.html#a7ca313b73d4ef6d209290f1629a437df">ArucoDetector</a> ()</td></tr>
-<tr class="memdesc:a7ca313b73d4ef6d209290f1629a437df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the aruco detection node with cv::aruco::DICT_ARUCO_ORIGINAL as the dictionary. <br /></td></tr>
+<tr class="memitem:a7ca313b73d4ef6d209290f1629a437df"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_aruco_detector.html#a7ca313b73d4ef6d209290f1629a437df">ArucoDetector</a> ()</td></tr>
+<tr class="memdesc:a7ca313b73d4ef6d209290f1629a437df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the aruco detection node.  <a href="class_aruco_detector.html#a7ca313b73d4ef6d209290f1629a437df">More...</a><br /></td></tr>
 <tr class="separator:a7ca313b73d4ef6d209290f1629a437df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95882439383cb1f3cacb4c981349dfb3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_aruco_detector.html#a95882439383cb1f3cacb4c981349dfb3">detect</a> (const sensor_msgs::msg::Image::ConstSharedPtr &amp;)</td></tr>
 <tr class="memdesc:a95882439383cb1f3cacb4c981349dfb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this function in order to detect the markers.  <a href="class_aruco_detector.html#a95882439383cb1f3cacb4c981349dfb3">More...</a><br /></td></tr>
@@ -129,6 +128,27 @@ Private Attributes</h2></td></tr>
 cv_bridge::CvImagePtr&#160;</td><td class="memItemRight" valign="bottom"><b>mCvPtr_</b></td></tr>
 <tr class="separator:aacaee5a602757a2921437fcbf9626a5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a7ca313b73d4ef6d209290f1629a437df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ca313b73d4ef6d209290f1629a437df">&#9670;&nbsp;</a></span>ArucoDetector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ArucoDetector::ArucoDetector </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates the aruco detection node. </p>
+<p>This is done with cv::aruco::DICT_ARUCO_ORIGINAL as the dictionary </p>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a95882439383cb1f3cacb4c981349dfb3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a95882439383cb1f3cacb4c981349dfb3">&#9670;&nbsp;</a></span>detect()</h2>

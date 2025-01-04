@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Assignment2_TM: README</title>
+<title>Assignment2_TM: Table of Content</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -83,7 +83,7 @@ $(document).ready(function(){initNavTree('md__r_e_a_d_m_e.html',''); initResizab
 
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">README </div>  </div>
+<div class="title">Table of Content </div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><ul>
@@ -96,15 +96,22 @@ $(document).ready(function(){initNavTree('md__r_e_a_d_m_e.html',''); initResizab
 <li><a href="#documentation">Documentation</a></li>
 </ul>
 <p><small><em><a href="http://ecotrust-canada.github.io/markdown-toc/">Table of contents generated with markdown-toc</a></em></small></p>
-<h1><a class="anchor" id="autotoc_md0"></a>
+<h1><a class="anchor" id="autotoc_md1"></a>
+In the docker container</h1>
+<ul>
+<li><code>apt install ros-foxy-nav2*</code></li>
+<li><code>apt install ros-foxy-plansys2-*</code></li>
+<li><code>apt install ros-foxy-slam-toolbox*</code> </li>
+</ul>
+<h1><a class="anchor" id="autotoc_md2"></a>
 Assumptions</h1>
 <ul>
 <li><a href="https://docs.ros.org/en/foxy/index.html">Ros2 foxy</a> should be installed in the system</li>
 <li>Using <a href="https://releases.ubuntu.com/focal/">ubuntu 20</a> </li>
 </ul>
-<h1><a class="anchor" id="autotoc_md1"></a>
+<h1><a class="anchor" id="autotoc_md3"></a>
 Installation</h1>
-<h2><a class="anchor" id="autotoc_md2"></a>
+<h2><a class="anchor" id="autotoc_md4"></a>
 In an already present workspace</h2>
 <ul>
 <li>Clone this repo inside the src folder of a ros2 foxy workspace</li>
@@ -113,12 +120,12 @@ In an already present workspace</h2>
 <li><code>ros2 launch assignment2_exprob_tm assignment2.launch.py</code></li>
 <li><code>ros2 run assignment2_exprob_tm mission_controller_node</code> </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md3"></a>
+<h2><a class="anchor" id="autotoc_md5"></a>
 In a new workspace</h2>
 <ul>
 <li><code>mkdir -p MyWorkspace/src</code></li>
 <li><code>cd MyWorkspace/src</code></li>
-<li><code>git clone <a href="https://github.com/Tonelllo/exprob1_DT.git">https://github.com/Tonelllo/exprob1_DT.git</a></code></li>
+<li><code>git clone <a href="https://github.com/Tonelllo/Assignment_exprob2_TM.git">https://github.com/Tonelllo/Assignment_exprob2_TM.git</a></code></li>
 <li><code>cd ..</code></li>
 <li><code>source /opt/ros/foxy/setup.bash</code></li>
 <li><code>colcon build</code></li>
@@ -126,9 +133,12 @@ In a new workspace</h2>
 <li><code>ros2 launch assignment2_exprob_tm assignment2.launch.py</code></li>
 <li><code>ros2 run assignment2_exprob_tm mission_controller_node</code> </li>
 </ul>
-<h1><a class="anchor" id="autotoc_md4"></a>
+<h1><a class="anchor" id="autotoc_md6"></a>
 Documentation</h1>
-<p>You can find the documentation at <a href="https://tonelllo.github.io/exprob1_DT/html/">https://tonelllo.github.io/exprob1_DT/html/</a> </p>
+<p>You can find the documentation at <a href="https://tonelllo.github.io/Assignment_exprob2_TM/html/">https://tonelllo.github.io/Assignment_exprob2_TM/html/</a> </p>
+<h1><a class="anchor" id="autotoc_md7"></a>
+Notes</h1>
+<p><b>NOTE</b> that the launch file in particular in the first runs is quite finicky. Please be patient and if the node does not start run again both the launchfile and the mission_manager node. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

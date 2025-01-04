@@ -99,13 +99,14 @@ def generate_launch_description():
         output='screen',
         parameters=[])
 
-    # GAZEBO_MODEL_PATH has to be correctly set for Gazebo to be able to find the model
     spawn_entity = Node(package='gazebo_ros', executable='spawn_entity.py',
                         arguments=['-entity', 'robot',
                                    '-topic', '/robot_description', '-y', '3'],
                         output='screen')
 
     return LaunchDescription([
+        # GAZEBO_MODEL_PATH has to be correctly set for Gazebo to be able to
+        # find the model
         SetEnvironmentVariable(name="GAZEBO_MODEL_PATH",
                                value=gazebo_model_path),
         DeclareLaunchArgument(name='model', default_value=default_model_path,

@@ -23,13 +23,15 @@ for the JavaScript code in this file
 var NAVTREE =
 [
   [ "Assignment2_TM", "index.html", [
-    [ "README", "md__r_e_a_d_m_e.html", [
-      [ "Assumptions", "md__r_e_a_d_m_e.html#autotoc_md0", null ],
-      [ "Installation", "md__r_e_a_d_m_e.html#autotoc_md1", [
-        [ "In an already present workspace", "md__r_e_a_d_m_e.html#autotoc_md2", null ],
-        [ "In a new workspace", "md__r_e_a_d_m_e.html#autotoc_md3", null ]
+    [ "Table of Content", "md__r_e_a_d_m_e.html", [
+      [ "In the docker container", "md__r_e_a_d_m_e.html#autotoc_md1", null ],
+      [ "Assumptions", "md__r_e_a_d_m_e.html#autotoc_md2", null ],
+      [ "Installation", "md__r_e_a_d_m_e.html#autotoc_md3", [
+        [ "In an already present workspace", "md__r_e_a_d_m_e.html#autotoc_md4", null ],
+        [ "In a new workspace", "md__r_e_a_d_m_e.html#autotoc_md5", null ]
       ] ],
-      [ "Documentation", "md__r_e_a_d_m_e.html#autotoc_md4", null ]
+      [ "Documentation", "md__r_e_a_d_m_e.html#autotoc_md6", null ],
+      [ "Notes", "md__r_e_a_d_m_e.html#autotoc_md7", null ]
     ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ]
@@ -40,8 +42,7 @@ var NAVTREE =
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", null ],
-        [ "Functions", "functions_func.html", null ],
-        [ "Variables", "functions_vars.html", null ]
+        [ "Functions", "functions_func.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [

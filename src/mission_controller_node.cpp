@@ -67,9 +67,10 @@ public:
   }
 
   /**
-   * @brief Displays the progress for each waypoint. Note that it's updating in
-   * place so if the terminal is not the correct size the prints will result
-   * incorrect
+   * @brief Displays the progress for each waypoint. 
+   *
+   * Note that it's updating in
+   * place so if the terminal is too small the prints will result incorrect
    */
   void show_progress() {
     auto feedback = executor_client_->getFeedBack();
@@ -99,7 +100,9 @@ public:
   }
 
   /**
-   * @brief Gets the current state of the actions to allow the update of the
+   * @brief Gets the current state of the actions
+   *
+   * This to allow the update of the
    * problem for the second phase of going to the minimum valued aruco node
    */
   void get_progress() {

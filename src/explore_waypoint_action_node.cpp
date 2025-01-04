@@ -58,14 +58,19 @@ private:
   std::atomic<bool> searching;
   ArucoDetector mArucoDetector_;
   std::atomic<int> found_id = -1;
-  /**
-   * @brief Callback on the images coming from the camera
-   */
+  float progress_;
+  rclcpp_lifecycle::LifecyclePublisher<geometry_msgs::msg::Twist>::SharedPtr
+      cmd_vel_pub_;
   rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr mCameraSubscriber_ =
       this->create_subscription<sensor_msgs::msg::Image>(
           "/camera/image_raw", 1,
           std::bind(&ExploreWaypointAction::getCurrentFrame, this,
                     std::placeholders::_1));
+  /**
+   * @brief Callback on the images coming from the camera
+   *
+   * @param img The image on which to do the detection of the arucos
+   */
   void getCurrentFrame(const sensor_msgs::msg::Image::SharedPtr img) {
     mArucoDetector_.detect(img);
     cv::Mat &cf = mArucoDetector_.currentFrame_;
@@ -86,7 +91,7 @@ private:
     }
   }
   /**
-   * @brief Sends updates during the operation cycle of theh node
+   * @brief Sends updates during the operation cycle of the node
    */
   void do_work() {
     searching = true;
@@ -122,11 +127,6 @@ private:
       found_id = -1;
     }
   }
-
-  float progress_;
-
-  rclcpp_lifecycle::LifecyclePublisher<geometry_msgs::msg::Twist>::SharedPtr
-      cmd_vel_pub_;
 };
 
 int main(int argc, char **argv) {

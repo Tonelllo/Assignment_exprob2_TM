@@ -2,8 +2,7 @@
 \label{class_mission_controller}\index{MissionController@{MissionController}}
 
 
-Inheritance diagram for Mission\+Controller\+:
-\nopagebreak
+Inheritance diagram for Mission\+Controller\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for Mission\+Controller\+:
 \end{figure}
 
 
-Collaboration diagram for Mission\+Controller\+:
-\nopagebreak
+Collaboration diagram for Mission\+Controller\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -28,12 +26,10 @@ void \mbox{\hyperlink{class_mission_controller_a9a5ab32a811161e63e2352467799ab09
 \begin{DoxyCompactList}\small\item\em Initializes all the ojects needed to control the pddl planning. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_mission_controller_a6252684ba94b6b05a0e220c012dddae7}{init\+\_\+knowledge}} ()
 \begin{DoxyCompactList}\small\item\em Initialization of the problem file for the planning. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_mission_controller_af73aff747611d3b6c851f964fbabf5ec}\label{class_mission_controller_af73aff747611d3b6c851f964fbabf5ec}} 
 void \mbox{\hyperlink{class_mission_controller_af73aff747611d3b6c851f964fbabf5ec}{show\+\_\+progress}} ()
-\begin{DoxyCompactList}\small\item\em Displays the progress for each waypoint. Note that it\textquotesingle{}s updating in place so if the terminal is not the correct size the prints will result incorrect. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_mission_controller_ae13d97ff3e9dd475b77b06b2c4410975}\label{class_mission_controller_ae13d97ff3e9dd475b77b06b2c4410975}} 
+\begin{DoxyCompactList}\small\item\em Displays the progress for each waypoint. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_mission_controller_ae13d97ff3e9dd475b77b06b2c4410975}{get\+\_\+progress}} ()
-\begin{DoxyCompactList}\small\item\em Gets the current state of the actions to allow the update of the problem for the second phase of going to the minimum valued aruco node. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Gets the current state of the actions. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_mission_controller_a40cb0e850838cd36b6b383a81297d1f4}{step}} ()
 \begin{DoxyCompactList}\small\item\em Function run for each cycle of the node. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
@@ -85,7 +81,17 @@ std\+::shared\+\_\+ptr$<$ plansys2\+::\+Executor\+Client $>$ {\bfseries executor
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_mission_controller_a6252684ba94b6b05a0e220c012dddae7}\label{class_mission_controller_a6252684ba94b6b05a0e220c012dddae7}} 
+\mbox{\Hypertarget{class_mission_controller_ae13d97ff3e9dd475b77b06b2c4410975}\label{class_mission_controller_ae13d97ff3e9dd475b77b06b2c4410975}} 
+\index{MissionController@{MissionController}!get\_progress@{get\_progress}}
+\index{get\_progress@{get\_progress}!MissionController@{MissionController}}
+\doxysubsubsection{\texorpdfstring{get\_progress()}{get\_progress()}}
+{\footnotesize\ttfamily void Mission\+Controller\+::get\+\_\+progress (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the current state of the actions. 
+
+This to allow the update of the problem for the second phase of going to the minimum valued aruco node \mbox{\Hypertarget{class_mission_controller_a6252684ba94b6b05a0e220c012dddae7}\label{class_mission_controller_a6252684ba94b6b05a0e220c012dddae7}} 
 \index{MissionController@{MissionController}!init\_knowledge@{init\_knowledge}}
 \index{init\_knowledge@{init\_knowledge}!MissionController@{MissionController}}
 \doxysubsubsection{\texorpdfstring{init\_knowledge()}{init\_knowledge()}}
@@ -101,7 +107,17 @@ The robot is in an unknown position at the beginning meaning that it\textquotesi
 
 (explored) is used to indicate that the aruco node in that waypoint has been identified
 
-All the waypoints and the robot get initialized. \mbox{\Hypertarget{class_mission_controller_a40cb0e850838cd36b6b383a81297d1f4}\label{class_mission_controller_a40cb0e850838cd36b6b383a81297d1f4}} 
+All the waypoints and the robot get initialized. \mbox{\Hypertarget{class_mission_controller_af73aff747611d3b6c851f964fbabf5ec}\label{class_mission_controller_af73aff747611d3b6c851f964fbabf5ec}} 
+\index{MissionController@{MissionController}!show\_progress@{show\_progress}}
+\index{show\_progress@{show\_progress}!MissionController@{MissionController}}
+\doxysubsubsection{\texorpdfstring{show\_progress()}{show\_progress()}}
+{\footnotesize\ttfamily void Mission\+Controller\+::show\+\_\+progress (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Displays the progress for each waypoint. 
+
+Note that it\textquotesingle{}s updating in place so if the terminal is too small the prints will result incorrect \mbox{\Hypertarget{class_mission_controller_a40cb0e850838cd36b6b383a81297d1f4}\label{class_mission_controller_a40cb0e850838cd36b6b383a81297d1f4}} 
 \index{MissionController@{MissionController}!step@{step}}
 \index{step@{step}!MissionController@{MissionController}}
 \doxysubsubsection{\texorpdfstring{step()}{step()}}

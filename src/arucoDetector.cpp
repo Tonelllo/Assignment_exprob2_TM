@@ -3,8 +3,9 @@
 #include <sensor_msgs/msg/detail/image__struct.hpp>
 
 /**
- * @brief Creates the aruco detection node with cv::aruco::DICT_ARUCO_ORIGINAL
- * as the dictionary
+ * @brief Creates the aruco detection node
+ *
+ * This is done with cv::aruco::DICT_ARUCO_ORIGINAL as the dictionary
  */
 ArucoDetector::ArucoDetector() {
   detectorParams_ = cv::aruco::DetectorParameters::create();

@@ -122,12 +122,12 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:ac5171eb33326134b7682fe6bc5118a6c"><td class="memItemLeft" align="right" valign="top"><a id="ac5171eb33326134b7682fe6bc5118a6c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>getCurrentFrame</b> (const sensor_msgs::msg::Image::SharedPtr img)</td></tr>
+<tr class="memitem:ac5171eb33326134b7682fe6bc5118a6c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_explore_waypoint_action.html#ac5171eb33326134b7682fe6bc5118a6c">getCurrentFrame</a> (const sensor_msgs::msg::Image::SharedPtr img)</td></tr>
+<tr class="memdesc:ac5171eb33326134b7682fe6bc5118a6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback on the images coming from the camera.  <a href="class_explore_waypoint_action.html#ac5171eb33326134b7682fe6bc5118a6c">More...</a><br /></td></tr>
 <tr class="separator:ac5171eb33326134b7682fe6bc5118a6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe0af6f8e1b76806745dd73e78ed4866"><td class="memItemLeft" align="right" valign="top"><a id="afe0af6f8e1b76806745dd73e78ed4866"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_explore_waypoint_action.html#afe0af6f8e1b76806745dd73e78ed4866">do_work</a> ()</td></tr>
-<tr class="memdesc:afe0af6f8e1b76806745dd73e78ed4866"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends updates during the operation cycle of theh node. <br /></td></tr>
+<tr class="memdesc:afe0af6f8e1b76806745dd73e78ed4866"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends updates during the operation cycle of the node. <br /></td></tr>
 <tr class="separator:afe0af6f8e1b76806745dd73e78ed4866"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
@@ -141,17 +141,50 @@ std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>
 <tr class="memitem:a2915957b866e8ade20a5c42992b6c765"><td class="memItemLeft" align="right" valign="top"><a id="a2915957b866e8ade20a5c42992b6c765"></a>
 std::atomic&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>found_id</b> = -1</td></tr>
 <tr class="separator:a2915957b866e8ade20a5c42992b6c765"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeaff07e75284f39ff2553a4bbd2fc34f"><td class="memItemLeft" align="right" valign="top">rclcpp::Subscription&lt; sensor_msgs::msg::Image &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_explore_waypoint_action.html#aeaff07e75284f39ff2553a4bbd2fc34f">mCameraSubscriber_</a></td></tr>
-<tr class="memdesc:aeaff07e75284f39ff2553a4bbd2fc34f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback on the images coming from the camera.  <a href="class_explore_waypoint_action.html#aeaff07e75284f39ff2553a4bbd2fc34f">More...</a><br /></td></tr>
-<tr class="separator:aeaff07e75284f39ff2553a4bbd2fc34f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a854d258e35a5e2dcd404921405815869"><td class="memItemLeft" align="right" valign="top"><a id="a854d258e35a5e2dcd404921405815869"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>progress_</b></td></tr>
 <tr class="separator:a854d258e35a5e2dcd404921405815869"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35be0eb55070fc9597c756927482e8ab"><td class="memItemLeft" align="right" valign="top"><a id="a35be0eb55070fc9597c756927482e8ab"></a>
 rclcpp_lifecycle::LifecyclePublisher&lt; geometry_msgs::msg::Twist &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>cmd_vel_pub_</b></td></tr>
 <tr class="separator:a35be0eb55070fc9597c756927482e8ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaff07e75284f39ff2553a4bbd2fc34f"><td class="memItemLeft" align="right" valign="top">rclcpp::Subscription&lt; sensor_msgs::msg::Image &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>mCameraSubscriber_</b></td></tr>
+<tr class="separator:aeaff07e75284f39ff2553a4bbd2fc34f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ac5171eb33326134b7682fe6bc5118a6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5171eb33326134b7682fe6bc5118a6c">&#9670;&nbsp;</a></span>getCurrentFrame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ExploreWaypointAction::getCurrentFrame </td>
+          <td>(</td>
+          <td class="paramtype">const sensor_msgs::msg::Image::SharedPtr&#160;</td>
+          <td class="paramname"><em>img</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Callback on the images coming from the camera. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">img</td><td>The image on which to do the detection of the arucos </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="ae3806a84056875de9475b38df4500046"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae3806a84056875de9475b38df4500046">&#9670;&nbsp;</a></span>on_activate()</h2>
 
@@ -245,11 +278,9 @@ rclcpp_lifecycle::LifecyclePublisher&lt; geometry_msgs::msg::Twist &gt;::SharedP
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">      this-&gt;create_subscription&lt;sensor_msgs::msg::Image&gt;(</div>
 <div class="line">          <span class="stringliteral">&quot;/camera/image_raw&quot;</span>, 1,</div>
-<div class="line">          std::bind(&amp;ExploreWaypointAction::getCurrentFrame, <span class="keyword">this</span>,</div>
+<div class="line">          std::bind(&amp;<a class="code" href="class_explore_waypoint_action.html#ac5171eb33326134b7682fe6bc5118a6c">ExploreWaypointAction::getCurrentFrame</a>, <span class="keyword">this</span>,</div>
 <div class="line">                    std::placeholders::_1))</div>
 </div><!-- fragment -->
-<p>Callback on the images coming from the camera. </p>
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
@@ -257,6 +288,7 @@ rclcpp_lifecycle::LifecyclePublisher&lt; geometry_msgs::msg::Twist &gt;::SharedP
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="aclass_explore_waypoint_action_html_ac5171eb33326134b7682fe6bc5118a6c"><div class="ttname"><a href="class_explore_waypoint_action.html#ac5171eb33326134b7682fe6bc5118a6c">ExploreWaypointAction::getCurrentFrame</a></div><div class="ttdeci">void getCurrentFrame(const sensor_msgs::msg::Image::SharedPtr img)</div><div class="ttdoc">Callback on the images coming from the camera.</div><div class="ttdef"><b>Definition:</b> explore_waypoint_action_node.cpp:74</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
