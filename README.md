@@ -10,6 +10,7 @@
 # In the docker container
 + `apt install ros-foxy-nav2*`
 + `apt install ros-foxy-plansys2-*`
++ `apt install ros-foxy-slam-toolbox*`
 # Assumptions
 + [Ros2 foxy](https://docs.ros.org/en/foxy/index.html) should be installed in the system
 + Using [ubuntu 20](https://releases.ubuntu.com/focal/)
