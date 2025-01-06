@@ -4,6 +4,9 @@
   * [In an already present workspace](#in-an-already-present-workspace)
   * [In a new workspace](#in-a-new-workspace)
 - [Documentation](#documentation)
+- [Notes](#notes)
+- [Video of a run](#video-of-a-run)
+
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
@@ -34,4 +37,6 @@
 # Documentation
 You can find the documentation at [https://tonelllo.github.io/Assignment_exprob2_TM/html/](https://tonelllo.github.io/Assignment_exprob2_TM/html/)
 # Notes
-**NOTE** that the launch file in particular in the first runs is quite finicky. Please be patient and if the node does not start run again both the launchfile and the mission_manager node. 
+**NOTE** that the launch file in particular in the first runs is quite finicky. Please be patient and if the node does not start run again both the launchfile and the mission_manager node.
+# Video of a run
+[![Video of the run](http://i.ytimg.com/vi/gK_PpCjbPfs/hqdefault.jpg)](https://www.youtube.com/watch?v=gK_PpCjbPfs)
