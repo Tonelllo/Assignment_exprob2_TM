@@ -31,7 +31,8 @@ var NAVTREE =
         [ "In a new workspace", "md__r_e_a_d_m_e.html#autotoc_md5", null ]
       ] ],
       [ "Documentation", "md__r_e_a_d_m_e.html#autotoc_md6", null ],
-      [ "Notes", "md__r_e_a_d_m_e.html#autotoc_md7", null ]
+      [ "Notes", "md__r_e_a_d_m_e.html#autotoc_md7", null ],
+      [ "Video of a run", "md__r_e_a_d_m_e.html#autotoc_md8", null ]
     ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ]
